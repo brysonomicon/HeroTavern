@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bvtwav3rx2bkr"]
+
+[ext_resource type="Script" uid="uid://cakddtuj04wgj" path="res://scenes/settings.gd" id="1_5p8wc"]
+
+[node name="settings" type="Control" unique_id=894017158]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5p8wc")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1647919542]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1786136969]
+layout_mode = 2
+
+[node name="TitleLabel" type="Label" parent="CenterContainer/VBoxContainer" unique_id=670380903]
+layout_mode = 2
+text = "Settings
+"
+
+[node name="BackButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=503113965]
+layout_mode = 2
+text = "Back"
