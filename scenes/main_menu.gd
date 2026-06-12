@@ -4,7 +4,6 @@ extends Control
 @export var SettingsButton: Button
 @export var QuitButton: Button
 @export var SettingsScene: PackedScene
-
 @export var characterCreatorScene: PackedScene
 
 # register event listeners 
@@ -15,14 +14,14 @@ func _ready() -> void:
 	QuitButton.pressed.connect(_on_quit_pressed)
 
 func _on_new_game_pressed() -> void:
-	print("the gizzy is fresh")
+	print("new game pressed")
 	
 func _on_continue_pressed() -> void:
-	print("contibule")
+	print("continue pressed")
 	
 func _on_settings_pressed() -> void:
-	get_tree().change_scene_to_packed(SettingsScene)
-	print("netting")
+	SceneRouter.goto(SettingsScene)
+	print("settings pressed")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

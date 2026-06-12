@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://crk3gjnh1d1as"]
+
+[ext_resource type="Script" uid="uid://cvqh738sjnljh" path="res://globals/scene_router.gd" id="1_rhpr5"]
+
+[node name="Router" type="Node" unique_id=602276670]
+script = ExtResource("1_rhpr5")
