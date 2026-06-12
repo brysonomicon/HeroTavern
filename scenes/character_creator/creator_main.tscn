@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cwr127qntpuru"]
+
+[ext_resource type="Script" uid="uid://dykoxopp2f4vk" path="res://scenes/character_creator/creator_main.gd" id="1_pcl8w"]
+[ext_resource type="PackedScene" uid="uid://c8bjt6cdw24ml" path="res://scenes/character_creator/class_selection.tscn" id="2_dc31r"]
+[ext_resource type="PackedScene" uid="uid://cbl1qa6lv7u30" path="res://scenes/character_creator/stat_distribution.tscn" id="3_vw51u"]
+[ext_resource type="PackedScene" uid="uid://wttfhjpr4ema" path="res://scenes/character_creator/skill_selection.tscn" id="4_qulq2"]
+[ext_resource type="PackedScene" uid="uid://cfgftyxebrtj" path="res://scenes/character_creator/appearance.tscn" id="5_hrwy5"]
+[ext_resource type="PackedScene" uid="uid://dlxjl7ty2vng0" path="res://scenes/character_creator/confirmation.tscn" id="6_u4rkx"]
+
+[node name="CreatorMain" type="Control" unique_id=1295500089 node_paths=PackedStringArray("steps", "back_button", "next_button", "title_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pcl8w")
+steps = [NodePath("VBoxContainer/StepContainer/ClassSelection"), NodePath("VBoxContainer/StepContainer/StatDistribution"), NodePath("VBoxContainer/StepContainer/SkillSelection"), NodePath("VBoxContainer/StepContainer/Appearance"), NodePath("VBoxContainer/StepContainer/Confirmation")]
+back_button = NodePath("VBoxContainer/NavBar/BackButton")
+next_button = NodePath("VBoxContainer/NavBar/NextButton")
+title_label = NodePath("VBoxContainer/NavBar/TitleLabel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1763136223]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StepContainer" type="Control" parent="VBoxContainer" unique_id=269617404]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ClassSelection" parent="VBoxContainer/StepContainer" unique_id=789442053 instance=ExtResource("2_dc31r")]
+layout_mode = 1
+
+[node name="StatDistribution" parent="VBoxContainer/StepContainer" unique_id=40392945 instance=ExtResource("3_vw51u")]
+layout_mode = 1
+
+[node name="SkillSelection" parent="VBoxContainer/StepContainer" unique_id=134213194 instance=ExtResource("4_qulq2")]
+layout_mode = 1
+
+[node name="Appearance" parent="VBoxContainer/StepContainer" unique_id=1633237617 instance=ExtResource("5_hrwy5")]
+layout_mode = 1
+
+[node name="Confirmation" parent="VBoxContainer/StepContainer" unique_id=329187539 instance=ExtResource("6_u4rkx")]
+layout_mode = 1
+
+[node name="NavBar" type="HBoxContainer" parent="VBoxContainer" unique_id=888108382]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+alignment = 1
+
+[node name="BackButton" type="Button" parent="VBoxContainer/NavBar" unique_id=851501206]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Back"
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer/NavBar" unique_id=862187876]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_alignment = 1
+
+[node name="NextButton" type="Button" parent="VBoxContainer/NavBar" unique_id=215540312]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Next"
