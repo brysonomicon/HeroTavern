@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://cbl1qa6lv7u30"]
+
+[ext_resource type="Script" uid="uid://d2kehwbofdjne" path="res://scenes/character_creator/stat_distribution.gd" id="1_5ufd6"]
+
+[node name="StatDistribution" type="Control" unique_id=40392945]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ufd6")
