@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cakddtuj04wgj" path="res://scenes/settings.gd" id="1_5p8wc"]
 
-[node name="settings" type="Control" unique_id=894017158]
+[node name="settings" type="Control" unique_id=894017158 node_paths=PackedStringArray("BackButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5p8wc")
+BackButton = NodePath("CenterContainer/VBoxContainer/BackButton")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1647919542]
 layout_mode = 1
