@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://ckvg3h6rehlgf"]
+
+[ext_resource type="Script" uid="uid://cvqh738sjnljh" path="res://scenes/game.gd" id="1_uwrxv"]
+
+[node name="Game" type="Node" unique_id=602276670 node_paths=PackedStringArray("screen_manager")]
+script = ExtResource("1_uwrxv")
+screen_manager = NodePath("ScreenManager")
+
+[node name="ScreenManager" type="Node" parent="." unique_id=1207858596]
