@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bcceibmdf111" path="res://scenes/character_creator/class_selection.gd" id="1_vc1su"]
 
-[node name="ClassSelection" type="Control" unique_id=789442053]
+[node name="ClassSelection" type="Control" unique_id=789442053 node_paths=PackedStringArray("button_container", "name_label", "description_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,3 +10,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vc1su")
+button_container = NodePath("HBoxContainer/ButtonContainer")
+name_label = NodePath("HBoxContainer/DescriptionPanel/NameLabel")
+description_label = NodePath("HBoxContainer/DescriptionPanel/DescriptionLabel")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1871296292]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="ButtonContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1143295526]
+layout_mode = 2
+alignment = 1
+
+[node name="DescriptionPanel" type="VBoxContainer" parent="HBoxContainer" unique_id=93553191]
+layout_mode = 2
+alignment = 1
+
+[node name="NameLabel" type="Label" parent="HBoxContainer/DescriptionPanel" unique_id=630674223]
+layout_mode = 2
+
+[node name="DescriptionLabel" type="Label" parent="HBoxContainer/DescriptionPanel" unique_id=1752291388]
+layout_mode = 2

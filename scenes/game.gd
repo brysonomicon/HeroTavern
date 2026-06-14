@@ -1,6 +1,6 @@
 extends Node
 
-@export var screen_manager: Node
+@export var screen_host: Node
 
 const MAIN_MENU: PackedScene = preload("res://scenes/main_menu.tscn")
 const SETTINGS: PackedScene = preload("res://scenes/settings.tscn")
@@ -10,7 +10,7 @@ var _current_screen: Node = null
 
 ## just temporary place to store created characters until they have a permanent
 ## home
-var	hero_roster: Array = []
+var	hero_roster: Array[Character] = []
 
 func _ready() -> void:
 	_show_main_menu()
@@ -30,7 +30,7 @@ func _set_screen(screen: Node) -> void:
 	if _current_screen:
 		_current_screen.queue_free()
 	_current_screen = screen
-	screen_manager.add_child(screen)
+	screen_host.add_child(screen)
 	
 ## opens the character creator for now, later will open the game world
 func _on_start_new_game() -> void:
@@ -43,7 +43,8 @@ func _on_char_created(data) -> void:
 	_show_main_menu()
 	
 func _on_continue_game() -> void:
-	pass
+	for hero in hero_roster:
+		print(hero.class_label)
 	
 func _on_open_settings() -> void:
 	var settings: Node = goto(SETTINGS)

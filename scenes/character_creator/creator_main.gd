@@ -1,6 +1,6 @@
 extends Control
 
-signal character_created(data)
+signal character_created(character)
 
 @export var steps: Array[Control]
 @export var back_button: Button
@@ -39,9 +39,10 @@ func _on_back() -> void:
 		
 # gather data from fields and export to object
 func _finish() -> void:
-	character_created.emit(_build_character())
+	character_created.emit(Character.new(self))
 	
-# this will return a Character object or whatever when it exists
-func _build_character():
-	## capture all the character details here
-	return null
+func populate(character: Character) -> void:
+	for step in steps:
+		if step.has_method("assign_property"):
+			step.call("assign_property", character)
+	
