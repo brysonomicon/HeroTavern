@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://rronsct0ind1"]
+
+[ext_resource type="Script" uid="uid://b5ove3k1xjijr" path="res://scenes/characters/character_sprite_editor.gd" id="1_mbpts"]
+[ext_resource type="PackedScene" uid="uid://bv65d6ukpxaol" path="res://scenes/characters/character_texture_box.tscn" id="2_31npu"]
+[ext_resource type="PackedScene" uid="uid://r3wt28qggrcf" path="res://scenes/ui/horizonalSelector.tscn" id="3_0344v"]
+
+[node name="CharacterSpriteEditor" type="Control" unique_id=339337101 node_paths=PackedStringArray("character")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mbpts")
+character = NodePath("HBoxContainer/CharacterPreviewMargin/CharacterPreview")
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="ColorRect" parent="." unique_id=1119109850]
+self_modulate = Color(0.5798421, 0.58823913, 0.07780997, 1)
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+color = Color(0.31764707, 0.2, 0.8156863, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=396738782]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 29
+alignment = 1
+
+[node name="CharacterPreviewMargin" type="MarginContainer" parent="HBoxContainer" unique_id=1271642829]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CharacterPreview" parent="HBoxContainer/CharacterPreviewMargin" unique_id=730120283 instance=ExtResource("2_31npu")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SettingsMargin" type="MarginContainer" parent="HBoxContainer" unique_id=164996347]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_right = 91
+
+[node name="Settings" type="VBoxContainer" parent="HBoxContainer/SettingsMargin" unique_id=1862384656]
+layout_mode = 2
+
+[node name="HorizonalSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=498084214 instance=ExtResource("3_0344v")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+category = "shirt"
+
+[node name="SkinColorContainer" type="HBoxContainer" parent="HBoxContainer/SettingsMargin/Settings" unique_id=1821524123]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/SettingsMargin/Settings/SkinColorContainer" unique_id=730109832]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Skin Color: "
+
+[node name="SkinColorButton" type="ColorPickerButton" parent="HBoxContainer/SettingsMargin/Settings/SkinColorContainer" unique_id=2043237480]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.7750634, 0.7750634, 0.7750634, 1)
+edit_alpha = false
+
+[node name="EyeColorContainer" type="HBoxContainer" parent="HBoxContainer/SettingsMargin/Settings" unique_id=1281292251]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/SettingsMargin/Settings/EyeColorContainer" unique_id=776368121]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Eye Color: "
+
+[node name="EyeColorButton" type="ColorPickerButton" parent="HBoxContainer/SettingsMargin/Settings/EyeColorContainer" unique_id=893712862]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.7750634, 0.7750634, 0.7750634, 1)
+edit_alpha = false
+
+[connection signal="ON_SELECTED_CHANGED" from="HBoxContainer/SettingsMargin/Settings/HorizonalSelector" to="." method="set_sprite_part"]
+[connection signal="color_changed" from="HBoxContainer/SettingsMargin/Settings/SkinColorContainer/SkinColorButton" to="." method="set_skin_color"]
+[connection signal="color_changed" from="HBoxContainer/SettingsMargin/Settings/EyeColorContainer/EyeColorButton" to="." method="set_eye_color"]
