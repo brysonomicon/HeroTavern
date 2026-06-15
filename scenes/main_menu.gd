@@ -1,5 +1,7 @@
 extends Control
 
+@export var characterCreatorScene: PackedScene
+
 # register event listeners 
 func _ready() -> void:
 	$CenterContainer/VBoxContainer/NewGameButton.pressed.connect(_on_new_game_pressed)
@@ -20,3 +22,7 @@ func _on_settings_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
+	
+func on_character_creator_pressed() -> void:
+	get_tree().change_scene_to_file(characterCreatorScene.resource_path)
+	
