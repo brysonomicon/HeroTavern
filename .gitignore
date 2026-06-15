@@ -1,3 +1,6 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+
+# ignore Intellij settings; we can remove this if we want to use one IDE exclusively
+.idea/

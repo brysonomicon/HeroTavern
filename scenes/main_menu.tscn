@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bsfv3gdx8bftx" path="res://scenes/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="PackedScene" uid="uid://rronsct0ind1" path="res://scenes/characters/CharacterSpriteEditor.tscn" id="2_ekxnf"]
+[ext_resource type="PackedScene" uid="uid://bvtwav3rx2bkr" path="res://scenes/settings.tscn" id="2_ekxnf"]
 
 [node name="MainMenu" type="Control" unique_id=581126962]
 layout_mode = 3
@@ -12,6 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
 characterCreatorScene = ExtResource("2_ekxnf")
+SettingsScene = ExtResource("2_ekxnf")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=477718406]
 layout_mode = 1
