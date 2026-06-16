@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cbl1qa6lv7u30"]
 
-[ext_resource type="Script" uid="uid://d2kehwbofdjne" path="res://scenes/character_creator/stat_distribution.gd" id="1_5ufd6"]
+[ext_resource type="Script" uid="uid://d2kehwbofdjne" path="res://scenes/character_creator/stat_distribution/stat_distribution.gd" id="1_5ufd6"]
 
 [node name="StatDistribution" type="Control" unique_id=40392945]
 layout_mode = 3

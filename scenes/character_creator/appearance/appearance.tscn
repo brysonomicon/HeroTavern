@@ -1,18 +1,21 @@
 [gd_scene format=3 uid="uid://rronsct0ind1"]
 
-[ext_resource type="Script" uid="uid://b5ove3k1xjijr" path="res://scenes/characters/character_sprite_editor.gd" id="1_mbpts"]
-[ext_resource type="PackedScene" uid="uid://bv65d6ukpxaol" path="res://scenes/characters/character_texture_box.tscn" id="2_31npu"]
-[ext_resource type="PackedScene" uid="uid://r3wt28qggrcf" path="res://scenes/ui/horizonalSelector.tscn" id="3_0344v"]
+[ext_resource type="Script" uid="uid://djgwm8qgw3acy" path="res://scenes/character_creator/appearance/appearance.gd" id="1_iuq4m"]
+[ext_resource type="PackedScene" uid="uid://bv65d6ukpxaol" path="res://scenes/character_creator/appearance/character_texture_box.tscn" id="2_tidsw"]
+[ext_resource type="PackedScene" uid="uid://r3wt28qggrcf" path="res://scenes/ui/horizontal_selector.tscn" id="3_pq8ds"]
 
-[node name="CharacterSpriteEditor" type="Control" unique_id=339337101 node_paths=PackedStringArray("character")]
+[node name="Appearance" type="Control" unique_id=339337101 node_paths=PackedStringArray("preview", "skin_color_button", "eye_color_button", "selectors")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_mbpts")
-character = NodePath("HBoxContainer/CharacterPreviewMargin/CharacterPreview")
+script = ExtResource("1_iuq4m")
+preview = NodePath("HBoxContainer/CharacterPreviewMargin/CharacterPreview")
+skin_color_button = NodePath("HBoxContainer/SettingsMargin/Settings/SkinColorContainer/SkinColorButton")
+eye_color_button = NodePath("HBoxContainer/SettingsMargin/Settings/EyeColorContainer/EyeColorButton")
+selectors = [NodePath("HBoxContainer/SettingsMargin/Settings/ShirtSelector")]
 metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="ColorRect" parent="." unique_id=1119109850]
@@ -41,7 +44,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CharacterPreview" parent="HBoxContainer/CharacterPreviewMargin" unique_id=730120283 instance=ExtResource("2_31npu")]
+[node name="CharacterPreview" parent="HBoxContainer/CharacterPreviewMargin" unique_id=730120283 instance=ExtResource("2_tidsw")]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -53,11 +56,10 @@ theme_override_constants/margin_right = 91
 [node name="Settings" type="VBoxContainer" parent="HBoxContainer/SettingsMargin" unique_id=1862384656]
 layout_mode = 2
 
-[node name="HorizonalSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=498084214 instance=ExtResource("3_0344v")]
+[node name="ShirtSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=498084214 instance=ExtResource("3_pq8ds")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-category = "shirt"
 
 [node name="SkinColorContainer" type="HBoxContainer" parent="HBoxContainer/SettingsMargin/Settings" unique_id=1821524123]
 layout_mode = 2
@@ -87,6 +89,6 @@ size_flags_horizontal = 3
 color = Color(0.7750634, 0.7750634, 0.7750634, 1)
 edit_alpha = false
 
-[connection signal="ON_SELECTED_CHANGED" from="HBoxContainer/SettingsMargin/Settings/HorizonalSelector" to="." method="set_sprite_part"]
-[connection signal="color_changed" from="HBoxContainer/SettingsMargin/Settings/SkinColorContainer/SkinColorButton" to="." method="set_skin_color"]
-[connection signal="color_changed" from="HBoxContainer/SettingsMargin/Settings/EyeColorContainer/EyeColorButton" to="." method="set_eye_color"]
+[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/ShirtSelector" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_on_horizonal_selector_part_selected"]
+[connection signal="color_changed" from="HBoxContainer/SettingsMargin/Settings/SkinColorContainer/SkinColorButton" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_on_skin_color_button_color_changed"]
+[connection signal="color_changed" from="HBoxContainer/SettingsMargin/Settings/EyeColorContainer/EyeColorButton" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_on_eye_color_button_color_changed"]

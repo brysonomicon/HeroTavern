@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dlxjl7ty2vng0"]
 
-[ext_resource type="Script" uid="uid://bwsvwd4fekpb6" path="res://scenes/character_creator/confirmation.gd" id="1_ptglk"]
+[ext_resource type="Script" uid="uid://bwsvwd4fekpb6" path="res://scenes/character_creator/confirmation/confirmation.gd" id="1_ptglk"]
 
 [node name="Confirmation" type="Control" unique_id=329187539]
 layout_mode = 3

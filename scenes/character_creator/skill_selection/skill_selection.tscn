@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://wttfhjpr4ema"]
 
-[ext_resource type="Script" uid="uid://buqq1eiv36h8v" path="res://scenes/character_creator/skill_selection.gd" id="1_2g7o1"]
+[ext_resource type="Script" uid="uid://buqq1eiv36h8v" path="res://scenes/character_creator/skill_selection/skill_selection.gd" id="1_2g7o1"]
 
 [node name="SkillSelection" type="Control" unique_id=134213194]
 layout_mode = 3

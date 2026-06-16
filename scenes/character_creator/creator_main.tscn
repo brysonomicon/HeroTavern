@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://cwr127qntpuru"]
 
 [ext_resource type="Script" uid="uid://dykoxopp2f4vk" path="res://scenes/character_creator/creator_main.gd" id="1_pcl8w"]
-[ext_resource type="PackedScene" uid="uid://c8bjt6cdw24ml" path="res://scenes/character_creator/class_selection.tscn" id="2_dc31r"]
-[ext_resource type="PackedScene" uid="uid://cbl1qa6lv7u30" path="res://scenes/character_creator/stat_distribution.tscn" id="3_vw51u"]
-[ext_resource type="PackedScene" uid="uid://wttfhjpr4ema" path="res://scenes/character_creator/skill_selection.tscn" id="4_qulq2"]
-[ext_resource type="PackedScene" uid="uid://cfgftyxebrtj" path="res://scenes/character_creator/appearance.tscn" id="5_hrwy5"]
-[ext_resource type="PackedScene" uid="uid://dlxjl7ty2vng0" path="res://scenes/character_creator/confirmation.tscn" id="6_u4rkx"]
+[ext_resource type="PackedScene" uid="uid://c8bjt6cdw24ml" path="res://scenes/character_creator/class_selection/class_selection.tscn" id="2_dc31r"]
+[ext_resource type="PackedScene" uid="uid://cbl1qa6lv7u30" path="res://scenes/character_creator/stat_distribution/stat_distribution.tscn" id="3_vw51u"]
+[ext_resource type="PackedScene" uid="uid://wttfhjpr4ema" path="res://scenes/character_creator/skill_selection/skill_selection.tscn" id="4_qulq2"]
+[ext_resource type="PackedScene" uid="uid://rronsct0ind1" path="res://scenes/character_creator/appearance/appearance.tscn" id="5_dc31r"]
+[ext_resource type="PackedScene" uid="uid://dlxjl7ty2vng0" path="res://scenes/character_creator/confirmation/confirmation.tscn" id="6_u4rkx"]
 
 [node name="CreatorMain" type="Control" unique_id=1295500089 node_paths=PackedStringArray("steps", "back_button", "next_button", "title_label")]
 layout_mode = 3
@@ -15,7 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pcl8w")
-steps = [NodePath("VBoxContainer/StepContainer/ClassSelection"), NodePath("VBoxContainer/StepContainer/StatDistribution"), NodePath("VBoxContainer/StepContainer/SkillSelection"), NodePath("VBoxContainer/StepContainer/Appearance"), NodePath("VBoxContainer/StepContainer/Confirmation")]
+steps = [NodePath("VBoxContainer/StepContainer/ClassSelection"), NodePath("VBoxContainer/StepContainer/StatDistribution"), NodePath("VBoxContainer/StepContainer/SkillSelection"), NodePath("VBoxContainer/StepContainer/CharacterSpriteEditor"), NodePath("VBoxContainer/StepContainer/Confirmation")]
 back_button = NodePath("VBoxContainer/NavBar/BackButton")
 next_button = NodePath("VBoxContainer/NavBar/NextButton")
 title_label = NodePath("VBoxContainer/NavBar/TitleLabel")
@@ -41,7 +41,7 @@ layout_mode = 1
 [node name="SkillSelection" parent="VBoxContainer/StepContainer" unique_id=134213194 instance=ExtResource("4_qulq2")]
 layout_mode = 1
 
-[node name="Appearance" parent="VBoxContainer/StepContainer" unique_id=1633237617 instance=ExtResource("5_hrwy5")]
+[node name="CharacterSpriteEditor" parent="VBoxContainer/StepContainer" unique_id=339337101 instance=ExtResource("5_dc31r")]
 layout_mode = 1
 
 [node name="Confirmation" parent="VBoxContainer/StepContainer" unique_id=329187539 instance=ExtResource("6_u4rkx")]

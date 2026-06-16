@@ -1,9 +1,7 @@
 [gd_scene format=3 uid="uid://cmq64lsd2jbor"]
 
 [ext_resource type="Script" uid="uid://bsfv3gdx8bftx" path="res://scenes/main_menu.gd" id="1_l6cm7"]
-[ext_resource type="PackedScene" uid="uid://bvtwav3rx2bkr" path="res://scenes/settings.tscn" id="2_ekxnf"]
-[ext_resource type="PackedScene" uid="uid://cwr127qntpuru" path="res://scenes/character_creator/creator_main.tscn" id="3_bqqt6"]
-[ext_resource type="PackedScene" uid="uid://rronsct0ind1" path="res://scenes/characters/CharacterSpriteEditor.tscn" id="4_wu84c"]
+[ext_resource type="PackedScene" uid="uid://rronsct0ind1" path="res://scenes/character_creator/appearance/appearance.tscn" id="4_wu84c"]
 
 [node name="MainMenu" type="Control" unique_id=581126962]
 layout_mode = 3
@@ -13,8 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_l6cm7")
-SettingsScene = ExtResource("2_ekxnf")
-CharCreateScene = ExtResource("3_bqqt6")
 characterCreatorScene = ExtResource("4_wu84c")
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=477718406]
@@ -42,10 +38,6 @@ text = "New Game"
 layout_mode = 2
 text = "Continue"
 
-[node name="CharacterEditorButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1115514721]
-layout_mode = 2
-text = "Character Editor"
-
 [node name="SettingsButton" type="Button" parent="CenterContainer/VBoxContainer" unique_id=1813680653]
 layout_mode = 2
 text = "Settings"
@@ -56,6 +48,5 @@ text = "Quit"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/CharacterEditorButton" to="." method="_on_character_editor_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
