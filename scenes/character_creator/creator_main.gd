@@ -25,7 +25,6 @@ func _show_step(index: int) -> void:
 	else:
 		next_button.text = "Next"
 	
-	
 func _on_next() -> void:
 	if _current < steps.size() - 1:
 		_show_step(_current + 1)
