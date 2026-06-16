@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://tlxip6ik6qa1"]
+
+[ext_resource type="Texture2D" uid="uid://ci57v5hxh4dnw" path="res://assets/sprites/default/defaultCharacter.png" id="1_qg3h7"]
+[ext_resource type="Texture2D" uid="uid://2y55s4iiq4vi" path="res://assets/sprites/default/eyes.png" id="2_csie0"]
+[ext_resource type="Texture2D" uid="uid://psd43axgxxiq" path="res://assets/sprites/default/Shirt.png" id="6_sdcpr"]
+
+[sub_resource type="Animation" id="Animation_1q6px"]
+resource_name = "Idle_Front"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ekb8c"]
+_data = {
+&"Idle_Front": SubResource("Animation_1q6px")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4x1nj"]
+
+[node name="CompositeCharacterSprite" type="CharacterBody2D" unique_id=1955612728]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=13189150]
+libraries/ = SubResource("AnimationLibrary_ekb8c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=878642262]
+position = Vector2(0, 1)
+scale = Vector2(1.4399981, 3.2000005)
+shape = SubResource("RectangleShape2D_4x1nj")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=1523457813]
+texture = ExtResource("1_qg3h7")
+
+[node name="Eyes" type="Sprite2D" parent="." unique_id=141441205]
+texture = ExtResource("2_csie0")
+
+[node name="Shirt" type="Sprite2D" parent="." unique_id=2069994534]
+self_modulate = Color(0.6398083, 0.4040043, 0.99522275, 1)
+texture = ExtResource("6_sdcpr")
