@@ -2,6 +2,31 @@ extends Control
 
 @export var title: String = "Confirmation"
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var class_label: Label
+@export var stats_label: Label
+@export var skills_label: Label
+@export var preview: CharacterTextureBox
+
+## class api
+
+func review(character: Character) -> void:
+	class_label.text = character.class_label
+	stats_label.text = _format_stats(character.stats)
+	skills_label.text = _format_skills(character.skills)
+	preview.display(character)
+
+## internals
+
+func _format_stats(stats: Dictionary) -> String:
+	var pairs: Array[String] = []
+	for stat in Character.STATS:
+		pairs.append("%s %d" % [stat.to_upper(), int(stats.get(stat, 0))])
+	return "  ".join(pairs)
+
+func _format_skills(skills: Array[Skill]) -> String:
+	if skills.is_empty():
+		return "none"
+	var names: Array[String] = []
+	for skill in skills:
+		names.append(skill.display_name)
+	return ", ".join(names)

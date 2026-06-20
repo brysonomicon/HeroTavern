@@ -30,3 +30,20 @@ func _node_for(slot: CharacterPart.Slot) -> TextureRect:
 	match slot:
 		CharacterPart.Slot.SHIRT: return shirt
 		_: return null
+
+func display(character: Character) -> void:
+	body.self_modulate = character.skin_color
+	eyes.self_modulate = character.eye_color
+	for part in character.parts:
+		_apply_part(part)
+
+func _apply_part(part: CharacterPart) -> void:
+	if part == null:
+		return
+	var slot_node: TextureRect = _node_for(part.slot)
+	if slot_node == null:
+		slot_node.visible = false
+	else:
+		slot_node.visible = true
+		slot_node.texture = part.texture
+		slot_node.self_modulate = part.defaultColor

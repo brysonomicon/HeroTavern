@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://cbl1qa6lv7u30"]
 
 [ext_resource type="Script" uid="uid://d2kehwbofdjne" path="res://scenes/character_creator/stat_distribution/stat_distribution.gd" id="1_5ufd6"]
+[ext_resource type="PackedScene" uid="uid://ipi2hty57sgu" path="res://scenes/ui/stat_row.tscn" id="2_765v6"]
 
-[node name="StatDistribution" type="Control" unique_id=40392945]
+[node name="StatDistribution" type="Control" unique_id=40392945 node_paths=PackedStringArray("rows", "roll_label", "points_left_label", "roll_button", "store_button", "recall_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -10,3 +11,69 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5ufd6")
+rows = [NodePath("VBoxContainer/StatsContainer/Strength"), NodePath("VBoxContainer/StatsContainer/Dexterity"), NodePath("VBoxContainer/StatsContainer/Constitution"), NodePath("VBoxContainer/StatsContainer/Intelligence"), NodePath("VBoxContainer/StatsContainer/Wisdom"), NodePath("VBoxContainer/StatsContainer/Charisma")]
+roll_label = NodePath("VBoxContainer/RollBar/RollLabel")
+points_left_label = NodePath("VBoxContainer/RollBar/PointsLeftLabel")
+roll_button = NodePath("VBoxContainer/RollBar/RollButton")
+store_button = NodePath("VBoxContainer/RollBar/StoreButton")
+recall_button = NodePath("VBoxContainer/RollBar/RecallButton")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=637316708]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RollBar" type="HBoxContainer" parent="VBoxContainer" unique_id=900470927]
+layout_mode = 2
+
+[node name="RollLabel" type="Label" parent="VBoxContainer/RollBar" unique_id=528945565]
+layout_mode = 2
+
+[node name="PointsLeftLabel" type="Label" parent="VBoxContainer/RollBar" unique_id=710794212]
+layout_mode = 2
+text = "Remaining"
+
+[node name="RollButton" type="Button" parent="VBoxContainer/RollBar" unique_id=600634449]
+layout_mode = 2
+text = "Roll"
+
+[node name="StoreButton" type="Button" parent="VBoxContainer/RollBar" unique_id=1434872409]
+layout_mode = 2
+text = "Store"
+
+[node name="RecallButton" type="Button" parent="VBoxContainer/RollBar" unique_id=1963089723]
+layout_mode = 2
+text = "Recall"
+
+[node name="StatsContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=62197817]
+layout_mode = 2
+
+[node name="Strength" parent="VBoxContainer/StatsContainer" unique_id=419275512 instance=ExtResource("2_765v6")]
+layout_mode = 2
+stat_key = "str"
+display_name = "Strength"
+
+[node name="Dexterity" parent="VBoxContainer/StatsContainer" unique_id=76226478 instance=ExtResource("2_765v6")]
+layout_mode = 2
+stat_key = "dex"
+display_name = "Dexterity"
+
+[node name="Constitution" parent="VBoxContainer/StatsContainer" unique_id=647158042 instance=ExtResource("2_765v6")]
+layout_mode = 2
+stat_key = "con"
+display_name = "Constitution"
+
+[node name="Intelligence" parent="VBoxContainer/StatsContainer" unique_id=443381625 instance=ExtResource("2_765v6")]
+layout_mode = 2
+stat_key = "int"
+display_name = "Intelligence"
+
+[node name="Wisdom" parent="VBoxContainer/StatsContainer" unique_id=1578064826 instance=ExtResource("2_765v6")]
+layout_mode = 2
+stat_key = "wis"
+display_name = "Wisdom"
+
+[node name="Charisma" parent="VBoxContainer/StatsContainer" unique_id=1451597839 instance=ExtResource("2_765v6")]
+layout_mode = 2
+stat_key = "cha"
+display_name = "Charisma"

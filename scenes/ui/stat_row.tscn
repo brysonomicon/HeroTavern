@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://ipi2hty57sgu"]
+
+[ext_resource type="Script" uid="uid://cmsq20356r6el" path="res://scenes/ui/stat_row.gd" id="1_olkn7"]
+
+[node name="StatRow" type="HBoxContainer" unique_id=419275512 node_paths=PackedStringArray("name_label", "value_label", "minus_button", "plus_button")]
+script = ExtResource("1_olkn7")
+name_label = NodePath("NameLabel")
+value_label = NodePath("ValueLabel")
+minus_button = NodePath("MinusButton")
+plus_button = NodePath("PlusButton")
+
+[node name="NameLabel" type="Label" parent="." unique_id=1503909008]
+layout_mode = 2
+
+[node name="MinusButton" type="Button" parent="." unique_id=780891162]
+layout_mode = 2
+text = "-"
+
+[node name="ValueLabel" type="Label" parent="." unique_id=1680620406]
+layout_mode = 2
+text = "3"
+
+[node name="PlusButton" type="Button" parent="." unique_id=883150762]
+layout_mode = 2
+text = "+"

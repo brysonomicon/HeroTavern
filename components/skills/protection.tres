@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://dumwr0e6up8kx"]
+
+[ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/skill.gd" id="1_q4wo8"]
+
+[resource]
+script = ExtResource("1_q4wo8")
+display_name = "Protection"
+description = "QUAKE"
+metadata/_custom_type_script = "uid://bvgjsgvli4bql"

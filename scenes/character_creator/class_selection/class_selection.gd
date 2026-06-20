@@ -1,12 +1,13 @@
 extends Control
 
+signal class_selected(class_data: Dictionary)
+signal complete
+
 @export var title: String = "Class Selection"
 @export var button_container: VBoxContainer
 @export var name_label: Label
 @export var description_label: Label
 
-## this should probably be an autoload or some other resource but this is
-## fine for prototyping
 const CLASSES: Array[Dictionary] = [
 	{"name": "Warrior", "description": "Melee fighter dude", "key_stat": "str"},
 	{"name": "Rogue", "description": "Sneaky stabby dude", "key_stat": "dex"},
@@ -29,10 +30,19 @@ func _ready() -> void:
 		button.pressed.connect(_on_class_pressed.bind(item))
 		button_container.add_child(button)
 		
+## signal handlers
+
 func _on_class_pressed(item: Dictionary) -> void:
 	_selected_class = item
 	name_label.text = item["name"]
 	description_label.text = item["description"]
+	class_selected.emit(item)
+	complete.emit()
+
+## class api
+
+func is_complete() -> bool:
+	return not _selected_class.is_empty()
 	
 func assign_property(character: Character) -> void:
 	character.class_label = _selected_class.get("name")

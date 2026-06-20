@@ -3,6 +3,7 @@ extends Resource
 
 @export var class_label: String = ""
 @export var stats: Dictionary
+@export var skills: Array[Skill]
 
 @export var skin_color: Color = Color.WHITE
 @export var eye_color: Color = Color.SADDLE_BROWN
