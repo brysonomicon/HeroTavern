@@ -13,7 +13,7 @@ func _run() -> void:
 
 func iterate_folder(folderPath: String) -> void:
 	if folderPath.containsn("Base"):
-		print("Ignoring base body directory")
+#		print("Ignoring base body directory")
 		return
 	
 	var baseDir: DirAccess = DirAccess.open(folderPath)
@@ -24,37 +24,83 @@ func iterate_folder(folderPath: String) -> void:
 	baseDir.list_dir_begin()
 	var current: String = baseDir.get_next()
 	while current != "":
-		if current == "default":
-			continue
-		elif baseDir.current_is_dir():
+		if baseDir.current_is_dir():
 			var nextPath: String = baseDir.get_current_dir().path_join(current)
-			print("Next Folder: %s" % nextPath)
 			iterate_folder(nextPath)
+		elif current.get_extension() != "png":
+			continue
 		else:
 			process_sprite(folderPath, current)
-			print("File: %s/%s" % [folderPath, current])
 		current = baseDir.get_next()
 
-func process_sprite(folderPath: String, fileName: String) -> void:
-	if fileName == "icon.svg" or fileName.ends_with(".import"):
-		print("Ignoring imports and default icon.")
+func process_sprite(spriteFolder: String, spriteName: String) -> void:
+	print("Processing sprite folder: ", spriteFolder, spriteName)
+	# Guard clauses
+	if spriteName.ends_with(".import"):
+#		print("Ignoring imports.")
 		return
-	var spriteDir: DirAccess = DirAccess.open(folderPath)
-	if DirAccess.get_open_error():
-		print("Invalid directory: %s" % spriteDir)
+	if spriteName == "icon.svg":
+#		print("Ignoring game icon.")
+		return
+	if spriteName == "characterBase.png":
+#		print("Ignoring character base art.")
+		return
+	if spriteFolder.ends_with("default"):
 		return
 	
-	var partFolderName: String = folderPath.rsplit("/", true, 1)[1]
-	if folderPath.containsn(defaultSpriteKeyword):
-		partFolderName = partFolderName.path_join(defaultSpriteKeyword)
-		
-#	var newPart: CharacterPart = CharacterPart.new()
-#	newPart.displayName = fileName
-	var partDir:DirAccess = DirAccess.open(partFolderName)
-	if DirAccess.get_open_error():
-		print("Cant get subdir: %s" % partFolderName)
+	var partPath: String = create_character_part_folder(spriteFolder)
+	if partPath == "":
 		return
+	
+	var partDir:DirAccess = DirAccess.open(partPath)
+	if DirAccess.get_open_error():
+		push_error("Cant get part path: %s" % partPath)
+	
+	var spriteNameClean: String = spriteName.to_camel_case()
 	partDir.list_dir_begin()
 	for file: String in partDir.get_files():
-		print(file)
-#	print("New folder name: %s" % [characterPartPath.path_join(partFolderName)])
+		# We don't want to re-make files.
+		if spriteNameClean.get_basename() == file.get_basename():
+			push_warning("Found part for ", file)
+			return
+	create_character_part(partDir, spriteDirPath, spriteName)
+			
+func create_character_part_folder(spriteFolder: String) -> String:
+	var partFolderName: String = spriteFolder.rsplit("/", true, 1)[1]
+
+	# Check if we are making an item for the default sets.
+	if spriteFolder.containsn(defaultSpriteKeyword):
+		partFolderName = partFolderName.path_join(defaultSpriteKeyword)
+	
+	var newPartPath: String = characterPartPath.path_join(partFolderName)
+	
+	#Create the folder, if needed
+	if not DirAccess.dir_exists_absolute(newPartPath):
+		var error: Error = DirAccess.make_dir_recursive_absolute(newPartPath)
+		if error == OK:
+			push_warning("Creating ", newPartPath)
+		else:
+			push_error("Failed to create ", newPartPath)
+			return ""
+	
+	return newPartPath
+
+func create_character_part(partDir: DirAccess, spriteFolder: String, spriteFile: String) -> void:
+	var newPart: CharacterPart = CharacterPart.new()
+
+	newPart.displayName = spriteFile.to_camel_case().get_basename()
+	var spritePath: String = spriteFolder.path_join(spriteFile)
+
+	var file: FileAccess = FileAccess.open(spritePath, FileAccess.READ)
+	if FileAccess.get_open_error() != OK:
+		push_error("Failed to open %s" % spritePath)
+		return
+		
+	var image: Image = Image.new()
+	var buffer: PackedByteArray = file.get_buffer(file.get_length())
+	var error: Error = image.load_png_from_buffer(buffer)
+	if error != OK:
+		push_error("Failed to load %s from buffer!" % spritePath)
+		
+	newPart.texture = ImageTexture.create_from_image(image)
+	
