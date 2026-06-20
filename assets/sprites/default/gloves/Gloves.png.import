@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://psd43axgxxiq"
-path="res://.godot/imported/Shirt.png-1b79691d0a08a85bfea66b0d8a21c338.ctex"
+uid="uid://cqhd3lhnj824b"
+path="res://.godot/imported/Gloves.png-ab1cda8becdeaafbb674b63b3398cb7b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/default/Shirt.png"
-dest_files=["res://.godot/imported/Shirt.png-1b79691d0a08a85bfea66b0d8a21c338.ctex"]
+source_file="res://assets/sprites/default/gloves/Gloves.png"
+dest_files=["res://.godot/imported/Gloves.png-ab1cda8becdeaafbb674b63b3398cb7b.ctex"]
 
 [params]
 

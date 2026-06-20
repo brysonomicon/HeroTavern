@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://2y55s4iiq4vi"
-path="res://.godot/imported/eyes.png-50c180dbab1e904a524a0e72896ed9b3.ctex"
+uid="uid://du5hcxbxx42dc"
+path="res://.godot/imported/Sleeveless.png-57d00b6063ba76dbf6bba5527e0772dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/default/eyes.png"
-dest_files=["res://.godot/imported/eyes.png-50c180dbab1e904a524a0e72896ed9b3.ctex"]
+source_file="res://assets/sprites/default/shirts/Sleeveless.png"
+dest_files=["res://.godot/imported/Sleeveless.png-57d00b6063ba76dbf6bba5527e0772dd.ctex"]
 
 [params]
 
