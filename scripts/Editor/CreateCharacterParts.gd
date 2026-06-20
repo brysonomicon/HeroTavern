@@ -96,10 +96,10 @@ func create_character_part(partDir: String, spriteFolder: String, spriteFile: St
 	newPart.texture = ImageTexture.create_from_image(image)
 	
 	var partName: String = newPart.displayName + ".tres"
-	var resourcePath = partDir.path_join(partName)
+	var resourcePath: String = partDir.path_join(partName)
 	var save_error: Error = ResourceSaver.save(newPart, resourcePath)
 	if save_error != OK:
 		push_error("Failed to save ", partName)
 	else:
-		print("Created new CharacterPart: ", newPart.displayName)
+		print("Created new CharacterPart: ", resourcePath)
 		EditorInterface.get_resource_filesystem().scan()
