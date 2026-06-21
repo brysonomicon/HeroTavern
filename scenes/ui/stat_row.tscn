@@ -3,23 +3,37 @@
 [ext_resource type="Script" uid="uid://cmsq20356r6el" path="res://scenes/ui/stat_row.gd" id="1_olkn7"]
 
 [node name="StatRow" type="HBoxContainer" unique_id=419275512 node_paths=PackedStringArray("name_label", "value_label", "minus_button", "plus_button")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
 script = ExtResource("1_olkn7")
 name_label = NodePath("NameLabel")
 value_label = NodePath("ValueLabel")
-minus_button = NodePath("MinusButton")
-plus_button = NodePath("PlusButton")
+minus_button = NodePath("ButtonBox/MinusButton")
+plus_button = NodePath("ButtonBox/PlusButton")
 
 [node name="NameLabel" type="Label" parent="." unique_id=1503909008]
 layout_mode = 2
+size_flags_horizontal = 3
 
-[node name="MinusButton" type="Button" parent="." unique_id=780891162]
+[node name="ValueLabel" type="Label" parent="." unique_id=1680620406]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "3"
+horizontal_alignment = 1
+
+[node name="ButtonBox" type="HBoxContainer" parent="." unique_id=1408740965]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="MinusButton" type="Button" parent="ButtonBox" unique_id=780891162]
 layout_mode = 2
 text = "-"
 
-[node name="ValueLabel" type="Label" parent="." unique_id=1680620406]
-layout_mode = 2
-text = "3"
-
-[node name="PlusButton" type="Button" parent="." unique_id=883150762]
+[node name="PlusButton" type="Button" parent="ButtonBox" unique_id=883150762]
 layout_mode = 2
 text = "+"
