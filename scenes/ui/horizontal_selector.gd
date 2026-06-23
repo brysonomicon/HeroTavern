@@ -57,5 +57,7 @@ func prev_item():
 	_apply()
 
 func _apply() -> void:
+	if items.size() == 1:
+		return
 	label.text = items[index].displayName
 	part_selected.emit(items[index])

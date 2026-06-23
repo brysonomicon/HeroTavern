@@ -2,12 +2,15 @@ class_name Character
 extends Resource
 
 @export var class_label: String = ""
-@export var stats: Dictionary
+@export var stats: Dictionary[StatType, int]
 @export var skills: Array[Skill]
 
 @export var skin_color: Color = Color.WHITE
 @export var eye_color: Color = Color.SADDLE_BROWN
-@export var parts: Array[CharacterPart] = []
+@export var parts: Dictionary[Slot, CharacterPart] = {}
+
+enum Slot { EYES, GLOVES, PANTS, SHIRTS, SHOES }
+enum StatType { STR, DEX, CON, INT, WIS, CHA }
 
 const STATS: Array[String] = ["str", "dex", "con", "int", "wis", "cha"]
 const STAT_MIN: int = 3

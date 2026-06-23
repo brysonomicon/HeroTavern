@@ -12,4 +12,4 @@ func assign_property(hero: Character) -> void:
 	for selector in selectors:
 		var part: CharacterPart = selector.current()
 		if part:
-			hero.parts.append(part)
+			hero.parts[part.slot] = part

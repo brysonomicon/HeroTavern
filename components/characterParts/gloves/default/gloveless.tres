@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CharacterPart" format=3 uid="uid://bf6tg5di3ucxk"]
+
+[ext_resource type="Script" uid="uid://bnlhah2gj4d6a" path="res://scripts/character_part.gd" id="1_piib0"]
+
+[resource]
+script = ExtResource("1_piib0")
+slot = 1
+displayName = "Gloveless"
+metadata/_custom_type_script = "uid://bnlhah2gj4d6a"

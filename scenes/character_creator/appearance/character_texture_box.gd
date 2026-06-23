@@ -26,9 +26,9 @@ func _on_horizonal_selector_part_selected(part: CharacterPart) -> void:
 		slot_node.self_modulate = part.defaultColor
 	
 ## need to add part slots as they are created here
-func _node_for(slot: CharacterPart.Slot) -> TextureRect:
+func _node_for(slot: CharacterSlot.Slot) -> TextureRect:
 	match slot:
-		CharacterPart.Slot.SHIRT: return shirt
+		CharacterSlot.Slot.SHIRTS: return shirt
 		_: return null
 
 func display(character: Character) -> void:
