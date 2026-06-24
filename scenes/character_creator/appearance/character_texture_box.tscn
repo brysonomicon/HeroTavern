@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bv65d6ukpxaol"]
 
 [ext_resource type="Script" uid="uid://ckeulw01v7s4a" path="res://scenes/character_creator/appearance/character_texture_box.gd" id="1_k4088"]
-[ext_resource type="Texture2D" path="res://assets/sprites/default/defaultCharacter.png" id="2_en26s"]
+[ext_resource type="Texture2D" uid="uid://g737vqwh760p" path="res://assets/sprites/default/characterBase.png" id="2_en26s"]
 [ext_resource type="Texture2D" uid="uid://2y55s4iiq4vi" path="res://assets/sprites/default/eyes/Eyes.png" id="3_0vwoa"]
-[ext_resource type="Texture2D" path="res://assets/sprites/default/Shirt.png" id="4_oajq5"]
+[ext_resource type="Texture2D" uid="uid://du5hcxbxx42dc" path="res://assets/sprites/default/shirts/Sleeveless.png" id="4_oajq5"]
 
 [node name="CharacterTextureBox" type="TextureRect" unique_id=730120283 node_paths=PackedStringArray("body", "eyes", "shirt")]
 stretch_mode = 5

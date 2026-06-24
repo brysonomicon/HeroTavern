@@ -84,7 +84,7 @@ func create_character_part(partDir: String, spritePath: String) -> void:
 	
 	var newPart: CharacterPart = CharacterPart.factory(
 		get_part_slot(partDir),
-		spritePath.rsplit("/", false, 1)[1].to_camel_case().get_basename(),
+		spritePath.rsplit("/", false, 1)[1].get_basename().to_camel_case(),
 		ImageTexture.create_from_image(image),
 	)
 
@@ -105,6 +105,7 @@ func get_part_slot(partDir: String) -> Character.Slot:
 			var slot: Character.Slot = Character.Slot.get(upper)
 			return slot
 	push_warning("Could not find slot for ", partDir)
+	# CB: I chose eyes because a character missing their eyes should be noticable.
 	return Character.Slot.EYES
 
 func get_texture_from_sprite(spritePath: String) -> Image:
