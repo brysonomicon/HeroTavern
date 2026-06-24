@@ -35,18 +35,15 @@ func _ready() -> void:
 			items.append(load("%s/%s" % [directory, file]) as CharacterPart)
 		
 		file = dir.get_next()
-		
-	if items.is_empty():
-		#TODO: Throw exception?
-		return
+	
+	# Throw is items is empty
+	assert(items.is_empty())
 	
 	# After we populate the array, set the label using the display name
 	_apply()
 
 func current() -> CharacterPart:
-	#CB ?: Should we not check for null? I feel like we should throw exception
-	# If items.is_empty during the _ready function.
-	return null if items.is_empty() else items[index]
+	return items[index]
 
 func next_item():
 	index += 1
