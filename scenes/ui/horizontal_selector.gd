@@ -5,6 +5,8 @@ signal part_selected(item:CharacterPart)
 
 @export_dir var directory:String
 
+@export var slot: Character.Slot
+@export var slotLabel: Label
 @export var leftButton: Button
 @export var rightButton: Button
 
@@ -15,6 +17,8 @@ var index:int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	var slotText: String = Character.Slot.keys()[slot]
+	slotLabel.text = slotText.to_snake_case().capitalize()
 	var dir: DirAccess = DirAccess.open(directory)
 	
 	# If we get an invalid folder; return.
@@ -33,13 +37,15 @@ func _ready() -> void:
 		file = dir.get_next()
 		
 	if items.is_empty():
+		#TODO: Throw exception?
 		return
 	
 	# After we populate the array, set the label using the display name
-	label.text = items[index].displayName
+	_apply()
 
-## 
 func current() -> CharacterPart:
+	#CB ?: Should we not check for null? I feel like we should throw exception
+	# If items.is_empty during the _ready function.
 	return null if items.is_empty() else items[index]
 
 func next_item():
@@ -53,11 +59,9 @@ func prev_item():
 	index -= 1
 	
 	if(index < 0):
-		index = items.size() - 1	
+		index = items.size() - 1
 	_apply()
 
 func _apply() -> void:
-	if items.size() == 1:
-		return
-	label.text = items[index].displayName
+	label.text = items[index].displayName.capitalize()
 	part_selected.emit(items[index])

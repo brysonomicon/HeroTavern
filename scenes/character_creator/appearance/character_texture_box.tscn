@@ -4,43 +4,62 @@
 [ext_resource type="Texture2D" uid="uid://g737vqwh760p" path="res://assets/sprites/default/characterBase.png" id="2_en26s"]
 [ext_resource type="Texture2D" uid="uid://2y55s4iiq4vi" path="res://assets/sprites/default/eyes/Eyes.png" id="3_0vwoa"]
 [ext_resource type="Texture2D" uid="uid://du5hcxbxx42dc" path="res://assets/sprites/default/shirts/Sleeveless.png" id="4_oajq5"]
+[ext_resource type="Texture2D" uid="uid://cqhd3lhnj824b" path="res://assets/sprites/default/gloves/Gloves.png" id="5_oajq5"]
+[ext_resource type="Texture2D" uid="uid://rrvqr8wa8crl" path="res://assets/sprites/default/pants/Shorts.png" id="6_ha8u3"]
+[ext_resource type="Texture2D" uid="uid://jjfkfnyvqky7" path="res://assets/sprites/default/shoes/Boots.png" id="7_mge7j"]
 
-[node name="CharacterTextureBox" type="TextureRect" unique_id=730120283 node_paths=PackedStringArray("body", "eyes", "shirt")]
-stretch_mode = 5
+[node name="CharacterTextureBox" type="AspectRatioContainer" unique_id=407809347 node_paths=PackedStringArray("body", "eyes", "parts")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -736.0
+offset_bottom = -536.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_k4088")
 body = NodePath("body")
 eyes = NodePath("eyes")
-shirt = NodePath("shirt")
+parts = {
+0: NodePath("eyes"),
+1: NodePath("gloves"),
+2: NodePath("pants"),
+3: NodePath("shirt"),
+4: NodePath("shoes")
+}
 
 [node name="body" type="TextureRect" parent="." unique_id=606544816]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.9956422, 1)
+layout_mode = 2
 texture = ExtResource("2_en26s")
+stretch_mode = 5
 
 [node name="eyes" type="TextureRect" parent="." unique_id=868051012]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
-grow_horizontal = 2
-grow_vertical = 2
+self_modulate = Color(0.64916617, 0.91333675, 0, 1)
+layout_mode = 2
 texture = ExtResource("3_0vwoa")
+stretch_mode = 5
 
 [node name="shirt" type="TextureRect" parent="." unique_id=387445343]
 self_modulate = Color(0.6398083, 0.4040043, 0.99522275, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 texture = ExtResource("4_oajq5")
+stretch_mode = 5
+
+[node name="gloves" type="TextureRect" parent="." unique_id=255039787]
+self_modulate = Color(0.99995726, 0.22727287, 0.38367087, 1)
+layout_mode = 2
+texture = ExtResource("5_oajq5")
+stretch_mode = 5
+
+[node name="pants" type="TextureRect" parent="." unique_id=323238608]
+self_modulate = Color(0, 0, 1, 1)
+layout_mode = 2
+texture = ExtResource("6_ha8u3")
+stretch_mode = 5
+
+[node name="shoes" type="TextureRect" parent="." unique_id=1179269312]
+self_modulate = Color(0.72982365, 0.2813379, 0, 1)
+layout_mode = 2
+texture = ExtResource("7_mge7j")
+stretch_mode = 5

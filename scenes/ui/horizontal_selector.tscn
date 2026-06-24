@@ -2,26 +2,32 @@
 
 [ext_resource type="Script" uid="uid://b3p5t3s2hoiwo" path="res://scenes/ui/horizontal_selector.gd" id="1_n5sjo"]
 
-[node name="HorizonalSelector" type="HBoxContainer" unique_id=498084214 node_paths=PackedStringArray("leftButton", "rightButton", "label")]
+[node name="HorizonalSelector" type="HBoxContainer" unique_id=498084214 node_paths=PackedStringArray("slotLabel", "leftButton", "rightButton", "label")]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -324.0
-offset_right = 110.0
-offset_bottom = -293.0
+offset_top = -300.0
+offset_right = 180.0
+offset_bottom = -269.0
 grow_vertical = 2
 script = ExtResource("1_n5sjo")
 directory = "res://assets/characterParts/Tops/Defaults"
-category = "Shirt"
+slotLabel = NodePath("SlotLabel")
 leftButton = NodePath("ButtonPrevious")
 rightButton = NodePath("ButtonNext")
-label = NodePath("Label")
+label = NodePath("PartLabel")
+
+[node name="SlotLabel" type="Label" parent="." unique_id=284808098]
+layout_mode = 2
+text = "FOOBAR"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ButtonPrevious" type="Button" parent="." unique_id=1117632620]
 layout_mode = 2
 text = "<"
 
-[node name="Label" type="Label" parent="." unique_id=1786217073]
+[node name="PartLabel" type="Label" parent="." unique_id=1786217073]
 layout_mode = 2
 text = "FOOBAR"
 horizontal_alignment = 1

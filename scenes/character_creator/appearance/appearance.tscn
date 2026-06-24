@@ -15,7 +15,7 @@ script = ExtResource("1_iuq4m")
 preview = NodePath("HBoxContainer/CharacterPreviewMargin/CharacterPreview")
 skin_color_button = NodePath("HBoxContainer/SettingsMargin/Settings/SkinColorContainer/SkinColorButton")
 eye_color_button = NodePath("HBoxContainer/SettingsMargin/Settings/EyeColorContainer/EyeColorButton")
-selectors = [NodePath("HBoxContainer/SettingsMargin/Settings/ShirtSelector")]
+selectors = [null]
 metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="ColorRect" parent="." unique_id=1119109850]
@@ -44,9 +44,15 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CharacterPreview" parent="HBoxContainer/CharacterPreviewMargin" unique_id=730120283 instance=ExtResource("2_tidsw")]
+[node name="CharacterPreview" parent="HBoxContainer/CharacterPreviewMargin" unique_id=730120283 node_paths=PackedStringArray("parts") instance=ExtResource("2_tidsw")]
 layout_mode = 2
-size_flags_vertical = 3
+parts = {
+0: NodePath("eyes"),
+1: NodePath("gloves"),
+2: NodePath("pants"),
+3: NodePath("shirt"),
+4: NodePath("shoes")
+}
 
 [node name="SettingsMargin" type="MarginContainer" parent="HBoxContainer" unique_id=164996347]
 layout_mode = 2
@@ -56,10 +62,33 @@ theme_override_constants/margin_right = 91
 [node name="Settings" type="VBoxContainer" parent="HBoxContainer/SettingsMargin" unique_id=1862384656]
 layout_mode = 2
 
-[node name="ShirtSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=498084214 instance=ExtResource("3_pq8ds")]
+[node name="ShirtSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=1656794628 instance=ExtResource("3_pq8ds")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+directory = "res://components/characterParts/shirts/default"
+slot = 3
+
+[node name="GloveSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=77263202 instance=ExtResource("3_pq8ds")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+directory = "res://components/characterParts/gloves/default"
+slot = 1
+
+[node name="PantsSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=204144592 instance=ExtResource("3_pq8ds")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+directory = "res://components/characterParts/pants/default"
+slot = 2
+
+[node name="ShoeSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=2144819055 instance=ExtResource("3_pq8ds")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+directory = "res://components/characterParts/shoes/default"
+slot = 4
 
 [node name="SkinColorContainer" type="HBoxContainer" parent="HBoxContainer/SettingsMargin/Settings" unique_id=1821524123]
 layout_mode = 2
@@ -89,6 +118,9 @@ size_flags_horizontal = 3
 color = Color(0.7750634, 0.7750634, 0.7750634, 1)
 edit_alpha = false
 
-[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/ShirtSelector" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_on_horizonal_selector_part_selected"]
+[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/ShirtSelector" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_apply_part"]
+[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/GloveSelector" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_apply_part"]
+[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/PantsSelector" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_apply_part"]
+[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/ShoeSelector" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_apply_part"]
 [connection signal="color_changed" from="HBoxContainer/SettingsMargin/Settings/SkinColorContainer/SkinColorButton" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_on_skin_color_button_color_changed"]
 [connection signal="color_changed" from="HBoxContainer/SettingsMargin/Settings/EyeColorContainer/EyeColorButton" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_on_eye_color_button_color_changed"]

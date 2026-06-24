@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://tlxip6ik6qa1"]
 
-[ext_resource type="Texture2D" uid="uid://ci57v5hxh4dnw" path="res://assets/sprites/default/defaultCharacter.png" id="1_qg3h7"]
-[ext_resource type="Texture2D" uid="uid://2y55s4iiq4vi" path="res://assets/sprites/default/eyes.png" id="2_csie0"]
-[ext_resource type="Texture2D" uid="uid://psd43axgxxiq" path="res://assets/sprites/default/Shirt.png" id="6_sdcpr"]
+[ext_resource type="Texture2D" uid="uid://g737vqwh760p" path="res://assets/sprites/default/characterBase.png" id="1_qg3h7"]
+[ext_resource type="Texture2D" uid="uid://2y55s4iiq4vi" path="res://assets/sprites/default/eyes/Eyes.png" id="2_csie0"]
+[ext_resource type="Texture2D" uid="uid://du5hcxbxx42dc" path="res://assets/sprites/default/shirts/Sleeveless.png" id="6_sdcpr"]
 
 [sub_resource type="Animation" id="Animation_1q6px"]
 resource_name = "Idle_Front"
