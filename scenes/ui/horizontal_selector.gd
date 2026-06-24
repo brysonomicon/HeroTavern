@@ -32,12 +32,12 @@ func _ready() -> void:
 	while file != "":
 		# Don't append subdirectories
 		if !dir.current_is_dir():
-			items.append(load("%s/%s" % [directory, file]) as CharacterPart)
+			items.append(load(directory.path_join(file)) as CharacterPart)
 		
 		file = dir.get_next()
 	
 	# Throw is items is empty
-	assert(items.is_empty())
+	assert(items.is_empty() == false)
 	
 	# After we populate the array, set the label using the display name
 	_apply()
