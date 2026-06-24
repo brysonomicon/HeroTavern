@@ -81,18 +81,20 @@ func create_character_part(partDir: String, spritePath: String) -> void:
 	var image: Image = get_texture_from_sprite(spritePath)
 	if image == null:
 		return
-	
+	var partName: String = spritePath.rsplit("/", false, 1)[1].get_basename().to_camel_case()
 	var newPart: CharacterPart = CharacterPart.factory(
 		get_part_slot(partDir),
-		spritePath.rsplit("/", false, 1)[1].get_basename().to_camel_case(),
+		partName,
 		ImageTexture.create_from_image(image),
 	)
+	if newPart == null:
+		push_error("Part ", partName, " was not created properly!")
 
-	var partName: String = newPart.displayName + ".tres"
-	var resourcePath: String = partDir.path_join(partName)
+	var partFileName: String = newPart.displayName + ".tres"
+	var resourcePath: String = partDir.path_join(partFileName)
 	var save_error: Error = ResourceSaver.save(newPart, resourcePath)
 	if save_error != OK:
-		push_error("Failed to save ", partName)
+		push_error("Failed to save ", partFileName)
 	else:
 		print("Created new CharacterPart: ", resourcePath)
 		EditorInterface.get_resource_filesystem().scan()

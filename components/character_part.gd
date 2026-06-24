@@ -19,7 +19,7 @@ static func factory(
 	newPart.slot = slotType
 	newPart.displayName = name
 	newPart.texture = texture2d
-	newPart.color = color
+	newPart.defaultColor = color
 	
 	return newPart
 	
