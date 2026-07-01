@@ -9,12 +9,12 @@ signal complete
 @export var description_label: Label
 
 const CLASSES: Array[Dictionary] = [
-	{"name": "Warrior", "description": "Melee fighter dude", "key_stat": "str"},
-	{"name": "Rogue", "description": "Sneaky stabby dude", "key_stat": "dex"},
-	{"name": "Barbarian", "description": "Angry fighter dude", "key_stat": "con"},
-	{"name": "Mage", "description": "Magic caster dude", "key_stat": "int"},
-	{"name": "Cleric", "description": "Buffer healer dude", "key_stat": "wis"},
-	{"name": "Bard", "description": "Music talker dude", "key_stat": "cha"}
+	{"name": "Warrior", "description": "Melee fighter dude", "key_stat": Character.StatType.STR},
+	{"name": "Rogue", "description": "Sneaky stabby dude", "key_stat": Character.StatType.DEX},
+	{"name": "Barbarian", "description": "Angry fighter dude", "key_stat": Character.StatType.CON},
+	{"name": "Mage", "description": "Magic caster dude", "key_stat": Character.StatType.INT},
+	{"name": "Cleric", "description": "Buffer healer dude", "key_stat": Character.StatType.WIS},
+	{"name": "Bard", "description": "Music talker dude", "key_stat": Character.StatType.CHA}
 ]
 
 var _selected_class: Dictionary = {}

@@ -15,7 +15,7 @@ script = ExtResource("1_iuq4m")
 preview = NodePath("HBoxContainer/CharacterPreviewMargin/CharacterPreview")
 skin_color_button = NodePath("HBoxContainer/SettingsMargin/Settings/SkinColorContainer/SkinColorButton")
 eye_color_button = NodePath("HBoxContainer/SettingsMargin/Settings/EyeColorContainer/EyeColorButton")
-selectors = [null]
+selectors = [NodePath("HBoxContainer/SettingsMargin/Settings/ShirtSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/GloveSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/PantsSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/ShoeSelector")]
 metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="ColorRect" parent="." unique_id=1119109850]

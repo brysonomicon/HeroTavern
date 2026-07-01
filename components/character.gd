@@ -12,7 +12,6 @@ extends Resource
 enum Slot { EYES, GLOVES, PANTS, SHIRTS, SHOES }
 enum StatType { STR, DEX, CON, INT, WIS, CHA }
 
-const STATS: Array[String] = ["str", "dex", "con", "int", "wis", "cha"]
 const STAT_MIN: int = 3
 const STAT_MAX: int = 18
 const KEY_STAT_MIN: int = 14

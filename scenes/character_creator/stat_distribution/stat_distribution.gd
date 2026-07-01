@@ -15,11 +15,11 @@ const ROLL_MODE: float = 80.0
 @export var store_button: Button
 @export var recall_button: Button
 
-var _stats: Dictionary = {}
+var _stats: Dictionary[Character.StatType, int] = {}
 var _total: int = 0
 var _remaining: int = 0
 var _stored: int = -1
-var _key_stat: String = ""
+var _key_stat: int = -1
 var _rng: RandomNumberGenerator
 
 func _ready() -> void:
@@ -54,13 +54,13 @@ func _on_recall() -> void:
 	_distribute()
 	_refresh()
 
-func _on_increment(stat_key: String) -> void:
+func _on_increment(stat_key: Character.StatType) -> void:
 	if _remaining > 0 and int(_stats[stat_key]) < Character.STAT_MAX:
 		_stats[stat_key] += 1
 		_remaining -= 1
 		_refresh()
 
-func _on_decrement(stat_key: String) -> void:
+func _on_decrement(stat_key: Character.StatType) -> void:
 	var stat_min = Character.KEY_STAT_MIN if stat_key == _key_stat else Character.STAT_MIN
 	if int(_stats[stat_key]) > stat_min:
 		_stats[stat_key] -= 1
@@ -69,7 +69,7 @@ func _on_decrement(stat_key: String) -> void:
 
 ## class api
 
-func setup(key_stat: String) -> void:
+func setup(key_stat: int) -> void:
 	if key_stat == _key_stat:
 		return
 	_key_stat = key_stat
@@ -87,7 +87,7 @@ func _reset() -> void:
 	_total = 0
 	_remaining = 0
 	_stored = -1
-	for stat in Character.STATS:
+	for stat in Character.StatType.values():
 		_stats[stat] = Character.KEY_STAT_MIN if stat == _key_stat else Character.STAT_MIN
 	_refresh()
 
@@ -119,7 +119,7 @@ func _sample_triangular(roll_min: float, roll_max: float, mode: float) -> float:
 		return roll_max - sqrt((1.0 - sample) * (roll_max - roll_min) * (roll_max - mode))
 
 func _distribute() -> void:
-	for stat in Character.STATS:
+	for stat in Character.StatType.values():
 		_stats[stat] = Character.KEY_STAT_MIN if stat == _key_stat else Character.STAT_MIN
 		_remaining = (
 			(_remaining - Character.KEY_STAT_MIN)
@@ -128,9 +128,9 @@ func _distribute() -> void:
 		)
 	while _remaining > 0:
 		var candidates: Array = []
-		for stat in Character.STATS:
+		for stat in Character.StatType.values():
 			if int(_stats[stat]) < Character.STAT_MAX:
 				candidates.append(stat)
-		var pick: String = candidates[_rng.randi_range(0, candidates.size() - 1)]
-		_stats[pick] = int(_stats[pick]) + 1
+		var pick: Character.StatType = candidates[_rng.randi_range(0, candidates.size() - 1)]
+		_stats[pick] += 1
 		_remaining -= 1

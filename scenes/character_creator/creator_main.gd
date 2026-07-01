@@ -8,7 +8,7 @@ signal character_created(character)
 @export var title_label: Label
 
 var _current: int = 0
-var _key_stat: String = ""
+var _key_stat: int = -1
 
 func _ready() -> void:
 	back_button.pressed.connect(_on_back)
@@ -44,7 +44,7 @@ func _on_next() -> void:
 		_finish()
 
 func _on_class_changed(class_data: Dictionary) -> void:
-	_key_stat = class_data.get("key_stat", "")
+	_key_stat = class_data.get("key_stat", -1)
 
 func _update_next_enabled() -> void:
 	var step: Control = steps[_current]

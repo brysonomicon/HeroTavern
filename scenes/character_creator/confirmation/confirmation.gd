@@ -19,8 +19,9 @@ func review(character: Character) -> void:
 
 func _format_stats(stats: Dictionary) -> String:
 	var pairs: Array[String] = []
-	for stat in Character.STATS:
-		pairs.append("%s %d" % [stat.to_upper(), int(stats.get(stat, 0))])
+	for stat_name in Character.StatType:
+		var stat: Character.StatType = Character.StatType[stat_name]
+		pairs.append("%s %d" % [stat_name, stats.get(stat, 0)])
 	return "  ".join(pairs)
 
 func _format_skills(skills: Array[Skill]) -> String:

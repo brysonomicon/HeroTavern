@@ -1,10 +1,10 @@
 class_name StatRow
 extends HBoxContainer
 
-signal increment_stat(stat_key: String)
-signal decrement_stat(stat_key: String)
+signal increment_stat(stat_key: Character.StatType)
+signal decrement_stat(stat_key: Character.StatType)
 
-@export var stat_key: String
+@export var stat_key: Character.StatType
 @export var display_name: String
 
 @export var name_label: Label 
