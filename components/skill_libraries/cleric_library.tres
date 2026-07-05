@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://ccn0jwjeubmtp" path="res://components/character_skills/skill_library.gd" id="1_p5pjx"]
 [ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="2_d4lf1"]
+[ext_resource type="Resource" uid="uid://jj5gada1uit6" path="res://components/character_skills/cleric/cure_light_wounds.tres" id="3_d4lf1"]
 
 [resource]
 script = ExtResource("1_p5pjx")
+display_name = "Cleric Library"
+skills = Array[ExtResource("2_d4lf1")]([ExtResource("3_d4lf1")])
+source_folder = "res://components/character_skills/cleric"
 metadata/_custom_type_script = "uid://ccn0jwjeubmtp"

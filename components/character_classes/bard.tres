@@ -1,8 +1,14 @@
 [gd_resource type="Resource" script_class="CharacterClass" format=3 uid="uid://byjx551riydok"]
 
 [ext_resource type="Script" uid="uid://cykbv0qg1ctam" path="res://components/character_class.gd" id="1_wfeno"]
-[ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="2_21l4v"]
+[ext_resource type="Script" uid="uid://ccn0jwjeubmtp" path="res://components/character_skills/skill_library.gd" id="2_2k2v8"]
+[ext_resource type="Resource" uid="uid://dq86h8s0kip3p" path="res://components/skill_libraries/bard_library.tres" id="3_a66bo"]
+[ext_resource type="Resource" uid="uid://con64uasj6g5x" path="res://components/skill_libraries/general_library.tres" id="4_fwb8f"]
 
 [resource]
 script = ExtResource("1_wfeno")
+display_name = "Bard"
+description = "It's bardin time"
+key_stat = 5
+skill_libraries = Array[ExtResource("2_2k2v8")]([ExtResource("3_a66bo"), ExtResource("4_fwb8f")])
 metadata/_custom_type_script = "uid://cykbv0qg1ctam"

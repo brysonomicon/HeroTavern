@@ -1,8 +1,14 @@
 [gd_resource type="Resource" script_class="CharacterClass" format=3 uid="uid://ca8cv0noh7je5"]
 
 [ext_resource type="Script" uid="uid://cykbv0qg1ctam" path="res://components/character_class.gd" id="1_btvpr"]
-[ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="2_he5xl"]
+[ext_resource type="Script" uid="uid://ccn0jwjeubmtp" path="res://components/character_skills/skill_library.gd" id="2_30lts"]
+[ext_resource type="Resource" uid="uid://con64uasj6g5x" path="res://components/skill_libraries/general_library.tres" id="3_s0m6c"]
+[ext_resource type="Resource" uid="uid://k4btw78tsedt" path="res://components/skill_libraries/cleric_library.tres" id="4_eirtq"]
 
 [resource]
 script = ExtResource("1_btvpr")
+display_name = "Cleric"
+description = "It's clericin time"
+key_stat = 4
+skill_libraries = Array[ExtResource("2_30lts")]([ExtResource("3_s0m6c"), ExtResource("4_eirtq")])
 metadata/_custom_type_script = "uid://cykbv0qg1ctam"

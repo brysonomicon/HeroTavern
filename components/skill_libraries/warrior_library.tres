@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://ccn0jwjeubmtp" path="res://components/character_skills/skill_library.gd" id="1_t7v0b"]
 [ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="2_q7xjo"]
+[ext_resource type="Resource" uid="uid://b4cllkyo6200s" path="res://components/character_skills/warrior/action_surge.tres" id="3_q7xjo"]
 
 [resource]
 script = ExtResource("1_t7v0b")
+display_name = "Warrior Skills"
+skills = Array[ExtResource("2_q7xjo")]([ExtResource("3_q7xjo")])
+source_folder = "res://components/character_skills/warrior"
 metadata/_custom_type_script = "uid://ccn0jwjeubmtp"

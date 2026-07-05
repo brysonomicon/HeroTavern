@@ -1,8 +1,13 @@
 [gd_resource type="Resource" script_class="CharacterClass" format=3 uid="uid://cyp86l0a271dv"]
 
 [ext_resource type="Script" uid="uid://cykbv0qg1ctam" path="res://components/character_class.gd" id="1_ljvfq"]
-[ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="2_uni8d"]
+[ext_resource type="Script" uid="uid://ccn0jwjeubmtp" path="res://components/character_skills/skill_library.gd" id="2_8a6be"]
+[ext_resource type="Resource" uid="uid://con64uasj6g5x" path="res://components/skill_libraries/general_library.tres" id="3_cnctf"]
+[ext_resource type="Resource" uid="uid://byjnog23lil00" path="res://components/skill_libraries/warrior_library.tres" id="4_osi1n"]
 
 [resource]
 script = ExtResource("1_ljvfq")
+display_name = "Warrior"
+description = "It's warriorin time"
+skill_libraries = Array[ExtResource("2_8a6be")]([ExtResource("3_cnctf"), ExtResource("4_osi1n")])
 metadata/_custom_type_script = "uid://cykbv0qg1ctam"

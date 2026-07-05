@@ -1,8 +1,14 @@
 [gd_resource type="Resource" script_class="CharacterClass" format=3 uid="uid://cdmywdhqjpjqv"]
 
 [ext_resource type="Script" uid="uid://cykbv0qg1ctam" path="res://components/character_class.gd" id="1_do3dl"]
-[ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="2_y8thl"]
+[ext_resource type="Script" uid="uid://ccn0jwjeubmtp" path="res://components/character_skills/skill_library.gd" id="2_2hab2"]
+[ext_resource type="Resource" uid="uid://ba2alqfpn12io" path="res://components/skill_libraries/barbarian_library.tres" id="3_vssrt"]
+[ext_resource type="Resource" uid="uid://con64uasj6g5x" path="res://components/skill_libraries/general_library.tres" id="4_kg6ae"]
 
 [resource]
 script = ExtResource("1_do3dl")
+display_name = "Barbarian"
+description = "It's barbarianin time"
+key_stat = 2
+skill_libraries = Array[ExtResource("2_2hab2")]([ExtResource("3_vssrt"), ExtResource("4_kg6ae")])
 metadata/_custom_type_script = "uid://cykbv0qg1ctam"

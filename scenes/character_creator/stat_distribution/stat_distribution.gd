@@ -69,10 +69,10 @@ func _on_decrement(stat_key: Character.StatType) -> void:
 
 ## class api
 
-func setup(key_stat: int) -> void:
-	if key_stat == _key_stat:
+func setup(character_class: CharacterClass) -> void:
+	if character_class == null:
 		return
-	_key_stat = key_stat
+	_key_stat = character_class.key_stat
 	_reset()
 
 func is_complete() -> bool:

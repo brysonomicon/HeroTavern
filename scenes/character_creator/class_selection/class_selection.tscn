@@ -1,6 +1,13 @@
 [gd_scene format=3 uid="uid://c8bjt6cdw24ml"]
 
 [ext_resource type="Script" uid="uid://bcceibmdf111" path="res://scenes/character_creator/class_selection/class_selection.gd" id="1_vc1su"]
+[ext_resource type="Script" uid="uid://cykbv0qg1ctam" path="res://components/character_class.gd" id="2_q8cl6"]
+[ext_resource type="Resource" uid="uid://byjx551riydok" path="res://components/character_classes/bard.tres" id="3_b3bge"]
+[ext_resource type="Resource" uid="uid://b4ikxykwwnpn4" path="res://components/character_classes/mage.tres" id="4_usdm7"]
+[ext_resource type="Resource" uid="uid://bd8smabeq55gs" path="res://components/character_classes/rogue.tres" id="5_cs8c6"]
+[ext_resource type="Resource" uid="uid://ca8cv0noh7je5" path="res://components/character_classes/cleric.tres" id="6_efrb0"]
+[ext_resource type="Resource" uid="uid://cyp86l0a271dv" path="res://components/character_classes/warrior.tres" id="7_n4wpp"]
+[ext_resource type="Resource" uid="uid://cdmywdhqjpjqv" path="res://components/character_classes/barbarian.tres" id="8_0ga7v"]
 
 [node name="ClassSelection" type="Control" unique_id=789442053 node_paths=PackedStringArray("button_container", "name_label", "description_label")]
 layout_mode = 3
@@ -10,6 +17,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vc1su")
+classes = Array[ExtResource("2_q8cl6")]([ExtResource("3_b3bge"), ExtResource("4_usdm7"), ExtResource("5_cs8c6"), ExtResource("6_efrb0"), ExtResource("7_n4wpp"), ExtResource("8_0ga7v")])
 button_container = NodePath("HBoxContainer/ButtonContainer")
 name_label = NodePath("HBoxContainer/DescriptionPanel/NameLabel")
 description_label = NodePath("HBoxContainer/DescriptionPanel/DescriptionLabel")

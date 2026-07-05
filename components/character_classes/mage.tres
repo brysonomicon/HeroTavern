@@ -1,8 +1,14 @@
 [gd_resource type="Resource" script_class="CharacterClass" format=3 uid="uid://b4ikxykwwnpn4"]
 
 [ext_resource type="Script" uid="uid://cykbv0qg1ctam" path="res://components/character_class.gd" id="1_h1tek"]
-[ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="2_qt3k7"]
+[ext_resource type="Script" uid="uid://ccn0jwjeubmtp" path="res://components/character_skills/skill_library.gd" id="2_squsa"]
+[ext_resource type="Resource" uid="uid://b36twlnwfttop" path="res://components/skill_libraries/mage_library.tres" id="3_ty6r3"]
+[ext_resource type="Resource" uid="uid://con64uasj6g5x" path="res://components/skill_libraries/general_library.tres" id="4_7pbgs"]
 
 [resource]
 script = ExtResource("1_h1tek")
+display_name = "Mage"
+description = "It's magin time"
+key_stat = 3
+skill_libraries = Array[ExtResource("2_squsa")]([ExtResource("3_ty6r3"), ExtResource("4_7pbgs")])
 metadata/_custom_type_script = "uid://cykbv0qg1ctam"

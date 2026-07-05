@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://ccn0jwjeubmtp" path="res://components/character_skills/skill_library.gd" id="1_o2qeg"]
 [ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="2_qjlrv"]
+[ext_resource type="Resource" uid="uid://dwvslci0btwj5" path="res://components/character_skills/bard/bardic_inspiration.tres" id="3_qjlrv"]
 
 [resource]
 script = ExtResource("1_o2qeg")
+display_name = "Bard Skills"
+skills = Array[ExtResource("2_qjlrv")]([ExtResource("3_qjlrv")])
+source_folder = "res://components/character_skills/bard"
 metadata/_custom_type_script = "uid://ccn0jwjeubmtp"

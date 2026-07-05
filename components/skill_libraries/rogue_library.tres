@@ -2,7 +2,11 @@
 
 [ext_resource type="Script" uid="uid://ccn0jwjeubmtp" path="res://components/character_skills/skill_library.gd" id="1_lduts"]
 [ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="2_fx8kn"]
+[ext_resource type="Resource" uid="uid://du6xs8rvtbew8" path="res://components/character_skills/rogue/backstab.tres" id="3_fx8kn"]
 
 [resource]
 script = ExtResource("1_lduts")
+display_name = "Rogue Library"
+skills = Array[ExtResource("2_fx8kn")]([ExtResource("3_fx8kn")])
+source_folder = "res://components/character_skills/rogue"
 metadata/_custom_type_script = "uid://ccn0jwjeubmtp"

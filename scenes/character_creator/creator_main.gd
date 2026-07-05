@@ -8,7 +8,7 @@ signal character_created(character)
 @export var title_label: Label
 
 var _current: int = 0
-var _key_stat: int = -1
+var _selected_class: CharacterClass = null
 
 func _ready() -> void:
 	back_button.pressed.connect(_on_back)
@@ -32,7 +32,7 @@ func _show_step(index: int) -> void:
 		next_button.text = "Next"
 	var step: Control = steps[index]
 	if step.has_method("setup"):
-		step.setup(_key_stat)
+		step.setup(_selected_class)
 	if step.has_method("review"):
 		step.review(Character.new(self))
 	_update_next_enabled()
@@ -43,8 +43,8 @@ func _on_next() -> void:
 	else:
 		_finish()
 
-func _on_class_changed(class_data: Dictionary) -> void:
-	_key_stat = class_data.get("key_stat", -1)
+func _on_class_changed(character_class: CharacterClass) -> void:
+	_selected_class = character_class
 
 func _update_next_enabled() -> void:
 	var step: Control = steps[_current]

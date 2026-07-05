@@ -1,8 +1,13 @@
 [gd_resource type="Resource" script_class="SkillLibrary" format=3 uid="uid://con64uasj6g5x"]
 
-[ext_resource type="Script" uid="uid://ccn0jwjeubmtp" path="res://components/character_skills/skill_library.gd" id="1_8mxdi"]
-[ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="2_6fk3q"]
+[ext_resource type="Script" uid="uid://ccn0jwjeubmtp" path="res://components/character_skills/skill_library.gd" id="1_m5jo8"]
+[ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="2_oi8po"]
+[ext_resource type="Resource" uid="uid://dumwr0e6up8kx" path="res://components/character_skills/general/protection.tres" id="3_e46dr"]
+[ext_resource type="Resource" uid="uid://rtqs7lvo54ej" path="res://components/character_skills/general/quad_damage.tres" id="4_qmt0a"]
 
 [resource]
-script = ExtResource("1_8mxdi")
+script = ExtResource("1_m5jo8")
+display_name = "General Skills"
+skills = Array[ExtResource("2_oi8po")]([ExtResource("3_e46dr"), ExtResource("4_qmt0a")])
+source_folder = "res://components/character_skills/general"
 metadata/_custom_type_script = "uid://ccn0jwjeubmtp"
