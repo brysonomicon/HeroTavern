@@ -2,7 +2,7 @@
 extends EditorScript
 
 const spriteDirPath: String = "res://assets/sprites/"
-const characterPartPath: String = "res://components/characterParts/"
+const characterPartPath: String = "res://components/character_parts/"
 const defaultSpriteKeyword: String = "default"
 var fs: EditorFileSystem = EditorInterface.get_resource_filesystem()
 

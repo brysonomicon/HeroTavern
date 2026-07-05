@@ -66,28 +66,28 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-directory = "res://components/characterParts/shirts/default"
+directory = "res://components/character_parts/shirts/default"
 slot = 3
 
 [node name="GloveSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=77263202 instance=ExtResource("3_pq8ds")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-directory = "res://components/characterParts/gloves/default"
+directory = "res://components/character_parts/gloves/default"
 slot = 1
 
 [node name="PantsSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=204144592 instance=ExtResource("3_pq8ds")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-directory = "res://components/characterParts/pants/default"
+directory = "res://components/character_parts/pants/default"
 slot = 2
 
 [node name="ShoeSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=2144819055 instance=ExtResource("3_pq8ds")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
-directory = "res://components/characterParts/shoes/default"
+directory = "res://components/character_parts/shoes/default"
 slot = 4
 
 [node name="SkinColorContainer" type="HBoxContainer" parent="HBoxContainer/SettingsMargin/Settings" unique_id=1821524123]

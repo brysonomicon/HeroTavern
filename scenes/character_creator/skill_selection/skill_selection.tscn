@@ -1,9 +1,6 @@
 [gd_scene format=3 uid="uid://wttfhjpr4ema"]
 
 [ext_resource type="Script" uid="uid://buqq1eiv36h8v" path="res://scenes/character_creator/skill_selection/skill_selection.gd" id="1_2g7o1"]
-[ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/skill.gd" id="2_nga02"]
-[ext_resource type="Resource" uid="uid://dumwr0e6up8kx" path="res://components/skills/protection.tres" id="3_h04ys"]
-[ext_resource type="Resource" uid="uid://rtqs7lvo54ej" path="res://components/skills/quad_damage.tres" id="4_yjbw1"]
 
 [node name="SkillSelection" type="Control" unique_id=134213194 node_paths=PackedStringArray("button_container", "name_label", "description_label")]
 layout_mode = 3
@@ -13,7 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2g7o1")
-skill_pool = Array[ExtResource("2_nga02")]([ExtResource("3_h04ys"), ExtResource("4_yjbw1")])
 button_container = NodePath("HBoxContainer/ButtonContainer")
 name_label = NodePath("HBoxContainer/DescriptionPanel/NameLabel")
 description_label = NodePath("HBoxContainer/DescriptionPanel/DescriptionLabel")
