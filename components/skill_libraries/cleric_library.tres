@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="SkillLibrary" format=3 uid="uid://k4btw78tsedt"]
+
+[ext_resource type="Script" uid="uid://ccn0jwjeubmtp" path="res://components/character_skills/skill_library.gd" id="1_p5pjx"]
+[ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="2_d4lf1"]
+
+[resource]
+script = ExtResource("1_p5pjx")
+metadata/_custom_type_script = "uid://ccn0jwjeubmtp"

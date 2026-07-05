@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://kjik4xhpsy1a"]
+
+[ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="1_nw8nj"]
+
+[resource]
+script = ExtResource("1_nw8nj")
+display_name = "Magic Missile"
+description = "It's magic missilin time"
+metadata/_custom_type_script = "uid://bvgjsgvli4bql"

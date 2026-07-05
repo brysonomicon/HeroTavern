@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Skill" format=3 uid="uid://du6xs8rvtbew8"]
+
+[ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="1_4rhkh"]
+
+[resource]
+script = ExtResource("1_4rhkh")
+display_name = "Backstab"
+description = "It's backstabbin time"
+metadata/_custom_type_script = "uid://bvgjsgvli4bql"
