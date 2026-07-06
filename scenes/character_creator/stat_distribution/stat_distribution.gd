@@ -22,6 +22,7 @@ var _remaining: int = 0
 var _stored: int = -1
 var _key_stat: int = -1
 var _rng: RandomNumberGenerator
+var _peak_sharpness: float = 6.0
 
 func _ready() -> void:
 	_rng = RandomNumberGenerator.new()
@@ -37,7 +38,7 @@ func _ready() -> void:
 ## signal handlers
 
 func _on_roll() -> void:
-	_total = roundi(_sample_triangular(ROLL_MIN, ROLL_MAX, ROLL_MODE))
+	_total = roundi(_sample_peaked(ROLL_MIN, ROLL_MAX, ROLL_MODE))
 	_remaining = _total
 	_distribute()
 	_refresh()
@@ -107,18 +108,18 @@ func _refresh() -> void:
 	recall_button.disabled = _stored < 0
 	complete.emit()
 
-func _sample_triangular(roll_min: float, roll_max: float, mode: float) -> float:
+func _sample_peaked(roll_min: float, roll_max: float, mode: float) -> float:
 	## get a sample between 0 - 1.0
 	var sample: float = randf()
 	## express the position of the peak as a value between 0 - 1.0
-	var peak = (mode - roll_min) / (roll_max - roll_min)
+	var peak: float = (mode - roll_min) / (roll_max - roll_min)
 
 	if sample < peak:
 		## sample the rising side
-		return roll_min + sqrt(sample * (roll_max - roll_min) * (mode - roll_min))
+		return roll_min + (mode - roll_min) * pow(sample / peak, 1.0 / _peak_sharpness)
 	else:
 		## sample the falling side
-		return roll_max - sqrt((1.0 - sample) * (roll_max - roll_min) * (roll_max - mode))
+		return roll_max - (roll_max - mode) * pow((1.0 - sample) / (1.0 - peak), 1.0 / _peak_sharpness)
 
 func _distribute() -> void:
 	for stat in Character.StatType.values():
