@@ -9,11 +9,12 @@ const ROLL_MAX: float = 99.0
 const ROLL_MODE: float = 80.0
 
 @export var rows: Array[StatRow]
-@export var roll_label: Label
 @export var points_left_label: Label
 @export var roll_button: Button
 @export var store_button: Button
 @export var recall_button: Button
+@export var total_label: Label
+@export var stored_label: Label
 
 var _stats: Dictionary[Character.StatType, int] = {}
 var _total: int = 0
@@ -93,7 +94,8 @@ func _reset() -> void:
 
 func _refresh() -> void:
 	var rolled: bool = _total > 0
-	roll_label.text = "%d" % _total if rolled else "-"
+	total_label.text = "%d" % _total if rolled else "-"
+	stored_label.text = "%d" % _stored if _stored else "-"
 	points_left_label.text = "%d" % _remaining if rolled else "-"
 	for row in rows:
 		var stat_min = Character.KEY_STAT_MIN if row.stat_key == _key_stat else Character.STAT_MIN

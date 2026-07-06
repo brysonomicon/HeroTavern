@@ -5,10 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cbl1qa6lv7u30" path="res://scenes/character_creator/stat_distribution/stat_distribution.tscn" id="3_vw51u"]
 [ext_resource type="PackedScene" uid="uid://wttfhjpr4ema" path="res://scenes/character_creator/skill_selection/skill_selection.tscn" id="4_qulq2"]
 [ext_resource type="PackedScene" uid="uid://rronsct0ind1" path="res://scenes/character_creator/appearance/appearance.tscn" id="5_dc31r"]
-[ext_resource type="Script" uid="uid://bvgjsgvli4bql" path="res://components/character_skill.gd" id="5_hrwy5"]
-[ext_resource type="Resource" uid="uid://rtqs7lvo54ej" path="res://components/character_skills/general/quad_damage.tres" id="6_0jt2x"]
 [ext_resource type="PackedScene" uid="uid://dlxjl7ty2vng0" path="res://scenes/character_creator/confirmation/confirmation.tscn" id="6_u4rkx"]
-[ext_resource type="Resource" uid="uid://dumwr0e6up8kx" path="res://components/character_skills/general/protection.tres" id="7_bd8oy"]
 
 [node name="CreatorMain" type="Control" unique_id=1295500089 node_paths=PackedStringArray("steps", "back_button", "next_button", "title_label")]
 layout_mode = 3
@@ -43,7 +40,6 @@ layout_mode = 1
 
 [node name="SkillSelection" parent="VBoxContainer/StepContainer" unique_id=134213194 instance=ExtResource("4_qulq2")]
 layout_mode = 1
-skill_pool = Array[ExtResource("5_hrwy5")]([ExtResource("6_0jt2x"), ExtResource("7_bd8oy")])
 
 [node name="CharacterSpriteEditor" parent="VBoxContainer/StepContainer" unique_id=339337101 instance=ExtResource("5_dc31r")]
 layout_mode = 1
