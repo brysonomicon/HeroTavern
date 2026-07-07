@@ -12,7 +12,7 @@ var _character_class: CharacterClass
 	set(newClass):
 		_character_class = newClass
 		class_label = _character_class.display_name
-@export var class_label: String = ""
+		
 @export var stats: Dictionary[StatType, int]
 @export var skills: Array[Skill]
 
@@ -20,6 +20,10 @@ var _character_class: CharacterClass
 @export var skin_color: Color = Color.WHITE
 @export var eye_color: Color = Color.SADDLE_BROWN
 @export var parts: Dictionary[Slot, CharacterPart] = {}
+
+# CB: Should we just remove this? I've made it a getter for now.
+var class_label: String:
+	get: return _character_class.display_name
 
 enum Slot { EYES, GLOVES, PANTS, SHIRTS, SHOES }
 enum StatType { STR, DEX, CON, INT, WIS, CHA }

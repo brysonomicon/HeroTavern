@@ -22,7 +22,7 @@ func _ready() -> void:
 		button.pressed.connect(_on_class_pressed.bind(item))
 		button_container.add_child(button)
 		
-## signal handlers
+#region signal handlers
 
 func _on_class_pressed(character_class: CharacterClass) -> void:
 	_selected_class = character_class
@@ -31,10 +31,18 @@ func _on_class_pressed(character_class: CharacterClass) -> void:
 	class_selected.emit(character_class)
 	complete.emit()
 
-## class api
+#endregion
+
+#region class api
 
 func is_complete() -> bool:
 	return _selected_class != null
 	
 func assign_property(character: Character) -> void:
-	character.class_label = _selected_class.display_name
+	#CB: Removed character.class_label
+	# TODO: Clean this up once I've tested there no impact.
+	#character.class_label = _selected_class.display_name
+	character.character_class = _selected_class
+	return
+
+#endregion
