@@ -1,10 +1,13 @@
 class_name Character
 extends Resource
 
+@export_group("Class Info")
+@export var character_class: CharacterClass
 @export var class_label: String = ""
 @export var stats: Dictionary[StatType, int]
 @export var skills: Array[Skill]
 
+@export_group("Sprite Info")
 @export var skin_color: Color = Color.WHITE
 @export var eye_color: Color = Color.SADDLE_BROWN
 @export var parts: Dictionary[Slot, CharacterPart] = {}
