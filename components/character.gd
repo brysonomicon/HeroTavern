@@ -1,8 +1,17 @@
 class_name Character
 extends Resource
 
+#region Backing fields for properties
+var _character_class: CharacterClass
+#endregion
+
 @export_group("Class Info")
-@export var character_class: CharacterClass
+@export var character_class: CharacterClass:
+	get:
+		return _character_class
+	set(newClass):
+		_character_class = newClass
+		class_label = _character_class.display_name
 @export var class_label: String = ""
 @export var stats: Dictionary[StatType, int]
 @export var skills: Array[Skill]
