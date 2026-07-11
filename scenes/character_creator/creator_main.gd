@@ -1,3 +1,12 @@
+## control script for the character creation wizard when the wizard is open,
+## all steps are created with only one being made visible at a time.
+## each step holds member data for the character in private variables. once each
+## step is confirmed complete, the data in the different steps is applied to the
+## finished character object.
+
+## steps could be abstracted into a specific control that formalizes the contract
+## of assign_property
+
 extends Control
 
 signal character_created(character)
