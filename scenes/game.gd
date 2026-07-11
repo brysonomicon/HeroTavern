@@ -43,9 +43,13 @@ func _on_char_created(data) -> void:
 	_show_main_menu()
 	
 func _on_continue_game() -> void:
-	for hero in hero_roster:
-		print(hero.character_class.display_name)
-	
+	if hero_roster.is_empty():
+		print("Hero roster is empty")
+	else:
+		print("=== Hero Roster: [%d] ===" %hero_roster.size())
+		for hero in hero_roster:
+			print(hero)
+
 func _on_open_settings() -> void:
 	var settings: Node = goto(SETTINGS)
 	settings.closed.connect(_show_main_menu)
