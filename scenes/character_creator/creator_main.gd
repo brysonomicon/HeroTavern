@@ -34,7 +34,7 @@ func _show_step(index: int) -> void:
 	if step.has_method("setup"):
 		step.setup(_selected_class)
 	if step.has_method("review"):
-		step.review(Character.new(self))
+		step.review(_build_character())
 	_update_next_enabled()
 
 func _on_next() -> void:
@@ -57,10 +57,12 @@ func _on_back() -> void:
 	if _current > 0:
 		_show_step(_current - 1)
 
-func _finish() -> void:
-	character_created.emit(Character.new(self))
-
-func populate(character: Character) -> void:
+func _build_character() -> Character:
+	var character: Character = Character.new()
 	for step in steps:
 		if step.has_method("assign_property"):
-			step.call("assign_property", character)
+			step.assign_property(character)
+	return character
+
+func _finish() -> void:
+	character_created.emit(_build_character())

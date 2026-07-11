@@ -4,6 +4,7 @@ extends Control
 
 signal complete
 
+## values for the stat roller. roll_max is 99 to be like BG, but 108 is the absolute max
 const ROLL_MIN: float = 70.0
 const ROLL_MAX: float = 99.0
 const ROLL_MODE: float = 80.0
@@ -21,6 +22,8 @@ var _total: int = 0
 var _remaining: int = 0
 var _stored: int = -1
 var _key_stat: int = -1
+
+## for the stat roller, higher sharpness = less likely to deviate from mode
 var _rng: RandomNumberGenerator
 var _peak_sharpness: float = 6.0
 
@@ -75,6 +78,7 @@ func setup(character_class: CharacterClass) -> void:
 	if character_class == null:
 		return
 	_key_stat = character_class.key_stat
+	# changing class resets everything downstream in the wizard
 	_reset()
 
 func is_complete() -> bool:
@@ -108,10 +112,9 @@ func _refresh() -> void:
 	recall_button.disabled = _stored < 0
 	complete.emit()
 
+
 func _sample_peaked(roll_min: float, roll_max: float, mode: float) -> float:
-	## get a sample between 0 - 1.0
 	var sample: float = randf()
-	## express the position of the peak as a value between 0 - 1.0
 	var peak: float = (mode - roll_min) / (roll_max - roll_min)
 
 	if sample < peak:

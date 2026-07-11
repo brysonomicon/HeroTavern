@@ -18,7 +18,3 @@ enum StatType { STR, DEX, CON, INT, WIS, CHA }
 const STAT_MIN: int = 3
 const STAT_MAX: int = 18
 const KEY_STAT_MIN: int = 14
-
-func _init(creator = null) -> void:
-	if creator:
-		creator.populate(self)
