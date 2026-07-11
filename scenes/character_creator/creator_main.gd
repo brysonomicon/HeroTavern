@@ -53,12 +53,10 @@ func _update_next_enabled() -> void:
 	else:
 		next_button.disabled = false
 
-# ong bak tony jaa 
 func _on_back() -> void:
 	if _current > 0:
 		_show_step(_current - 1)
 
-# gather data from fields and export to object
 func _finish() -> void:
 	character_created.emit(Character.new(self))
 

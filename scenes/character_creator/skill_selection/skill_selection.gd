@@ -21,8 +21,7 @@ func setup(character_class: CharacterClass) -> void:
 	_character_class = character_class
 	build_for(character_class)
 
-## signal handlers
-
+#region signal handlers
 func _on_skill_selected(selected: bool, skill: Skill) -> void:
 	if selected: 
 		_selected.append(skill)
@@ -31,17 +30,17 @@ func _on_skill_selected(selected: bool, skill: Skill) -> void:
 	_show_description(skill)
 	_refresh()
 	complete.emit()
+#endregion
 
-## class api
-
+#region class api
 func is_complete() -> bool:
 	return not _selected.is_empty()
 
 func assign_property(character: Character) -> void:
 	character.skills = _selected.duplicate()
+#endregion
 
-## internals
-
+#region internals
 func build_for(character_class: CharacterClass) -> void:
 	_selected.clear()
 	for child in button_container.get_children():
@@ -73,3 +72,4 @@ func _refresh() -> void:
 func _show_description(skill: Skill) -> void:
 	name_label.text = skill.display_name
 	description_label.text = skill.description
+#endregion

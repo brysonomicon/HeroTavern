@@ -6,6 +6,7 @@ signal open_settings
 
 @export var characterCreatorScene: PackedScene
 
+#region signal handlers
 func _on_new_game_button_pressed() -> void:
 	print("new game pressed")
 	start_new_game.emit()
@@ -21,3 +22,4 @@ func _on_settings_button_pressed() -> void:
 func _on_quit_button_pressed() -> void:
 	print("quit pressed")
 	get_tree().quit()
+#endregion

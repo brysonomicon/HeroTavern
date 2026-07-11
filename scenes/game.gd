@@ -44,7 +44,7 @@ func _on_char_created(data) -> void:
 	
 func _on_continue_game() -> void:
 	for hero in hero_roster:
-		print(hero.class_label)
+		print(hero.character_class.display_name)
 	
 func _on_open_settings() -> void:
 	var settings: Node = goto(SETTINGS)

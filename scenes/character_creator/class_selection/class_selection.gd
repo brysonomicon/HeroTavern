@@ -39,9 +39,6 @@ func is_complete() -> bool:
 	return _selected_class != null
 	
 func assign_property(character: Character) -> void:
-	#CB: Removed character.class_label
-	# TODO: Clean this up once I've tested there no impact.
-	#character.class_label = _selected_class.display_name
 	character.character_class = _selected_class
 	return
 

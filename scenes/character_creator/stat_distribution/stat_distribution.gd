@@ -35,8 +35,8 @@ func _ready() -> void:
 		row.decrement_stat.connect(_on_decrement)
 	_reset()
 
-## signal handlers
 
+#region signal handlers
 func _on_roll() -> void:
 	_total = roundi(_sample_peaked(ROLL_MIN, ROLL_MAX, ROLL_MODE))
 	_remaining = _total
@@ -68,9 +68,9 @@ func _on_decrement(stat_key: Character.StatType) -> void:
 		_stats[stat_key] -= 1
 		_remaining += 1
 		_refresh()
+#endregion
 
-## class api
-
+#region class api
 func setup(character_class: CharacterClass) -> void:
 	if character_class == null:
 		return
@@ -82,9 +82,9 @@ func is_complete() -> bool:
 
 func assign_property(character: Character) -> void:
 	character.stats = _stats.duplicate()
+#endregion
 
-## internals
-
+#region internals
 func _reset() -> void:
 	_total = 0
 	_remaining = 0
@@ -137,3 +137,4 @@ func _distribute() -> void:
 		var pick: Character.StatType = candidates[_rng.randi_range(0, candidates.size() - 1)]
 		_stats[pick] += 1
 		_remaining -= 1
+#endregion

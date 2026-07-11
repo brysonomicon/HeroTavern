@@ -7,16 +7,15 @@ extends Control
 @export var skills_label: Label
 @export var preview: CharacterTextureBox
 
-## class api
-
+#region class api
 func review(character: Character) -> void:
-	class_label.text = character.class_label
+	class_label.text = character.character_class.display_name
 	stats_label.text = _format_stats(character.stats)
 	skills_label.text = _format_skills(character.skills)
 	preview.display(character)
+#endregion
 
-## internals
-
+#region internals
 func _format_stats(stats: Dictionary) -> String:
 	var pairs: Array[String] = []
 	for stat_name in Character.StatType:
@@ -31,3 +30,4 @@ func _format_skills(skills: Array[Skill]) -> String:
 	for skill in skills:
 		names.append(skill.display_name)
 	return ", ".join(names)
+#endregion
