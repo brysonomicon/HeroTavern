@@ -1,6 +1,8 @@
 class_name Character
 extends Resource
 
+@export var character_name: String = ""
+
 @export_group("Class Info")
 @export var character_class: CharacterClass
 @export var stats: Dictionary[StatType, int]
@@ -20,7 +22,7 @@ const KEY_STAT_MIN: int = 14
 
 func _to_string() -> String:
 	var lines: PackedStringArray = []
-	lines.append(character_class.display_name if character_class else "classless swine")
+	lines.append("%s the %s" % [character_name, character_class.display_name if character_class else "classless swine"])
 	
 	var stat_stuff: PackedStringArray = []
 	for stat in StatType:
