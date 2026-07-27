@@ -5,7 +5,7 @@ extends Control
 @export var class_label: Label
 @export var stats_label: Label
 @export var skills_label: Label
-@export var preview: CharacterTextureBox
+@export var preview: CharacterSprite
 
 ## class api
 

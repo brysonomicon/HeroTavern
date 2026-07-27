@@ -25,7 +25,7 @@ var _character_class: CharacterClass
 var class_label: String:
 	get: return _character_class.display_name
 
-enum Slot { EYES, GLOVES, PANTS, SHIRTS, SHOES }
+enum Slot { BASE, EYES, HAIR, HELMET, SHIRT, GLOVES, PANTS, SHOES }
 enum StatType { STR, DEX, CON, INT, WIS, CHA }
 
 const STAT_MIN: int = 3
@@ -35,3 +35,4 @@ const KEY_STAT_MIN: int = 14
 func _init(creator = null) -> void:
 	if creator:
 		creator.populate(self)
+	
