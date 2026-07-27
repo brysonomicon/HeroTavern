@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_hyna2")
-slot = 1
+slot = 4
 displayName = "Gloves"
 texture = ExtResource("2_f3h35")
 defaultColor = Color(0.5019608, 0.2784314, 0.10980392, 1)

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="CharacterPart" format=3 uid="uid://qujtwauav3ac"]
 
-[ext_resource type="Script" uid="uid://bnlhah2gj4d6a" path="res://scripts/character_part.gd" id="1_i1kdn"]
+[ext_resource type="Script" uid="uid://bnlhah2gj4d6a" path="res://components/character_part.gd" id="1_i1kdn"]
 
 [resource]
 script = ExtResource("1_i1kdn")
-slot = 2
+slot = 5
 displayName = "Pantless"
 metadata/_custom_type_script = "uid://bnlhah2gj4d6a"
