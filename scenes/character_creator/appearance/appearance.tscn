@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://rronsct0ind1"]
 
 [ext_resource type="Script" uid="uid://djgwm8qgw3acy" path="res://scenes/character_creator/appearance/appearance.gd" id="1_iuq4m"]
-[ext_resource type="PackedScene" uid="uid://bv65d6ukpxaol" path="res://scenes/character_creator/appearance/character_texture_box.tscn" id="2_tidsw"]
 [ext_resource type="PackedScene" uid="uid://r3wt28qggrcf" path="res://scenes/ui/horizontal_selector.tscn" id="3_pq8ds"]
+[ext_resource type="PackedScene" uid="uid://tlxip6ik6qa1" path="res://scenes/character_creator/appearance/CharacterSprite.tscn" id="3_tidsw"]
 
 [node name="Appearance" type="Control" unique_id=339337101 node_paths=PackedStringArray("preview", "skin_color_button", "eye_color_button", "selectors")]
 layout_mode = 3
@@ -12,10 +12,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iuq4m")
-preview = NodePath("HBoxContainer/CharacterPreviewMargin/CharacterPreview")
+preview = NodePath("HBoxContainer/CharacterPreviewMargin/CompositeSprite")
 skin_color_button = NodePath("HBoxContainer/SettingsMargin/Settings/SkinColorContainer/SkinColorButton")
 eye_color_button = NodePath("HBoxContainer/SettingsMargin/Settings/EyeColorContainer/EyeColorButton")
-selectors = [NodePath("HBoxContainer/SettingsMargin/Settings/ShirtSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/GloveSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/PantsSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/ShoeSelector")]
+selectors = [NodePath("HBoxContainer/SettingsMargin/Settings/EyesSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/HairSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/HelmetSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/ShirtSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/GloveSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/PantsSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/ShoeSelector")]
 metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="ColorRect" parent="." unique_id=1119109850]
@@ -44,14 +44,18 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CharacterPreview" parent="HBoxContainer/CharacterPreviewMargin" unique_id=730120283 node_paths=PackedStringArray("parts") instance=ExtResource("2_tidsw")]
-layout_mode = 2
+[node name="CompositeSprite" parent="HBoxContainer/CharacterPreviewMargin" unique_id=1787682309 node_paths=PackedStringArray("parts") instance=ExtResource("3_tidsw")]
+position = Vector2(192.5, 300)
+scale = Vector2(6.22, 6.22)
 parts = {
-0: NodePath("eyes"),
-1: NodePath("gloves"),
-2: NodePath("pants"),
-3: NodePath("shirt"),
-4: NodePath("shoes")
+0: NodePath("Base"),
+1: NodePath("Eyes"),
+2: NodePath("Hair"),
+3: NodePath("Helmet"),
+4: NodePath("Shirt"),
+5: NodePath("Gloves"),
+6: NodePath("Pants"),
+7: NodePath("Shoes")
 }
 
 [node name="SettingsMargin" type="MarginContainer" parent="HBoxContainer" unique_id=164996347]
@@ -62,33 +66,50 @@ theme_override_constants/margin_right = 91
 [node name="Settings" type="VBoxContainer" parent="HBoxContainer/SettingsMargin" unique_id=1862384656]
 layout_mode = 2
 
-[node name="ShirtSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=1656794628 instance=ExtResource("3_pq8ds")]
+[node name="EyesSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=498084214 instance=ExtResource("3_pq8ds")]
+layout_mode = 2
+directory = "res://components/character_parts/eyes/default"
+slot = 1
+
+[node name="HairSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=356099524 instance=ExtResource("3_pq8ds")]
+layout_mode = 2
+directory = "res://components/character_parts/hair/default"
+slot = 2
+
+[node name="HelmetSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=1656794628 instance=ExtResource("3_pq8ds")]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+directory = "res://components/character_parts/helmets/default"
+slot = 3
+
+[node name="ShirtSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=998056523 instance=ExtResource("3_pq8ds")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 directory = "res://components/character_parts/shirts/default"
-slot = 3
+slot = 4
 
 [node name="GloveSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=77263202 instance=ExtResource("3_pq8ds")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 directory = "res://components/character_parts/gloves/default"
-slot = 1
+slot = 5
 
 [node name="PantsSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=204144592 instance=ExtResource("3_pq8ds")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 directory = "res://components/character_parts/pants/default"
-slot = 2
+slot = 6
 
 [node name="ShoeSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=2144819055 instance=ExtResource("3_pq8ds")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 directory = "res://components/character_parts/shoes/default"
-slot = 4
+slot = 7
 
 [node name="SkinColorContainer" type="HBoxContainer" parent="HBoxContainer/SettingsMargin/Settings" unique_id=1821524123]
 layout_mode = 2
@@ -118,9 +139,10 @@ size_flags_horizontal = 3
 color = Color(0.7750634, 0.7750634, 0.7750634, 1)
 edit_alpha = false
 
-[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/ShirtSelector" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_apply_part"]
-[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/GloveSelector" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_apply_part"]
-[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/PantsSelector" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_apply_part"]
-[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/ShoeSelector" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_apply_part"]
-[connection signal="color_changed" from="HBoxContainer/SettingsMargin/Settings/SkinColorContainer/SkinColorButton" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_on_skin_color_button_color_changed"]
-[connection signal="color_changed" from="HBoxContainer/SettingsMargin/Settings/EyeColorContainer/EyeColorButton" to="HBoxContainer/CharacterPreviewMargin/CharacterPreview" method="_on_eye_color_button_color_changed"]
+[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/EyesSelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]
+[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/HairSelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]
+[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/HelmetSelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]
+[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/ShirtSelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]
+[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/GloveSelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]
+[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/PantsSelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]
+[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/ShoeSelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]

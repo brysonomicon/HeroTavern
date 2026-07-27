@@ -1,7 +1,7 @@
 extends Control
 
 @export var title: String = "Appearance"
-@export var preview: CharacterTextureBox
+@export var preview: CharacterSprite
 @export var skin_color_button: ColorPickerButton
 @export var eye_color_button: ColorPickerButton
 @export var selectors: Array[HorizontalSelector]
