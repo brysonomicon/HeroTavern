@@ -66,7 +66,11 @@ theme_override_constants/margin_right = 91
 [node name="Settings" type="VBoxContainer" parent="HBoxContainer/SettingsMargin" unique_id=1862384656]
 layout_mode = 2
 
-[node name="EyesSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=498084214 instance=ExtResource("3_pq8ds")]
+[node name="BodySelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=498084214 instance=ExtResource("3_pq8ds")]
+layout_mode = 2
+directory = "res://components/character_parts/bases/default"
+
+[node name="EyesSelector" parent="HBoxContainer/SettingsMargin/Settings" unique_id=1416469002 instance=ExtResource("3_pq8ds")]
 layout_mode = 2
 directory = "res://components/character_parts/eyes/default"
 slot = 1
@@ -139,6 +143,7 @@ size_flags_horizontal = 3
 color = Color(0.7750634, 0.7750634, 0.7750634, 1)
 edit_alpha = false
 
+[connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/BodySelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]
 [connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/EyesSelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]
 [connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/HairSelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]
 [connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/HelmetSelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]

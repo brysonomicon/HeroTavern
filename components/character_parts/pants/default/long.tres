@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_36p7e")
-slot = 5
+slot = 6
 displayName = "long"
 texture = ExtResource("2_isydu")

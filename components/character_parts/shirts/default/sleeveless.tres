@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_t4s57")
-slot = 3
+slot = 4
 displayName = "sleeveless"
 texture = ExtResource("2_k3pt7")

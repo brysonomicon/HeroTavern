@@ -21,10 +21,7 @@ func _ready() -> void:
 	slotLabel.text = slotText.to_snake_case().capitalize()
 	var dir: DirAccess = DirAccess.open(directory)
 	
-	# If we get an invalid folder; return.
-	# TODO: Throw an exception.
-	if !dir:
-		return
+	assert(dir != null)
 	
 	dir.list_dir_begin()
 	var file: String = dir.get_next()

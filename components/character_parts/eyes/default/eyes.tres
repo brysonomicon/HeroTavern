@@ -16,6 +16,6 @@ image = SubResource("Image_0qqw8")
 
 [resource]
 script = ExtResource("1_wwcgn")
+slot = 1
 displayName = "Default"
 texture = SubResource("ImageTexture_7iaom")
-defaultColor = Color(0.5764706, 0.6901961, 0.9607843, 0)

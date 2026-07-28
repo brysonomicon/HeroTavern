@@ -5,6 +5,6 @@
 
 [resource]
 script = ExtResource("1_llcdn")
-slot = 5
-displayName = "shorts"
+slot = 6
+displayName = "Shorts"
 texture = ExtResource("2_j0sqb")

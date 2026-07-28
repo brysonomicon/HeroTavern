@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_i1kdn")
-slot = 5
+slot = 6
 displayName = "Pantless"
 metadata/_custom_type_script = "uid://bnlhah2gj4d6a"
