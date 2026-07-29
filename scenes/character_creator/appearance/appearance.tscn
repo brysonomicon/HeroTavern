@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://djgwm8qgw3acy" path="res://scenes/character_creator/appearance/appearance.gd" id="1_iuq4m"]
 [ext_resource type="PackedScene" uid="uid://r3wt28qggrcf" path="res://scenes/ui/horizontal_selector.tscn" id="3_pq8ds"]
 [ext_resource type="PackedScene" uid="uid://tlxip6ik6qa1" path="res://scenes/character_creator/appearance/CharacterSprite.tscn" id="3_tidsw"]
+[ext_resource type="Texture2D" uid="uid://drwx1uyvfwum5" path="res://assets/palettes/palette_character.png" id="4_tidsw"]
 
 [node name="Appearance" type="Control" unique_id=339337101 node_paths=PackedStringArray("preview", "skin_color_button", "eye_color_button", "selectors")]
 layout_mode = 3
@@ -44,7 +45,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CompositeSprite" parent="HBoxContainer/CharacterPreviewMargin" unique_id=1787682309 node_paths=PackedStringArray("parts") instance=ExtResource("3_tidsw")]
+[node name="CompositeSprite" parent="HBoxContainer/CharacterPreviewMargin" unique_id=1787682309 node_paths=PackedStringArray("parts", "debugSprite") instance=ExtResource("3_tidsw")]
 position = Vector2(192.5, 300)
 scale = Vector2(6.22, 6.22)
 parts = {
@@ -57,6 +58,7 @@ parts = {
 6: NodePath("Pants"),
 7: NodePath("Shoes")
 }
+debugSprite = NodePath("../../Sprite2D")
 
 [node name="SettingsMargin" type="MarginContainer" parent="HBoxContainer" unique_id=164996347]
 layout_mode = 2
@@ -128,6 +130,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.7750634, 0.7750634, 0.7750634, 1)
 edit_alpha = false
+edit_intensity = false
 
 [node name="EyeColorContainer" type="HBoxContainer" parent="HBoxContainer/SettingsMargin/Settings" unique_id=1281292251]
 layout_mode = 2
@@ -142,6 +145,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 color = Color(0.7750634, 0.7750634, 0.7750634, 1)
 edit_alpha = false
+edit_intensity = false
+
+[node name="Sprite2D" type="Sprite2D" parent="HBoxContainer" unique_id=2143262521]
+position = Vector2(434, 525)
+scale = Vector2(58.507202, 31.478035)
+texture = ExtResource("4_tidsw")
 
 [connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/BodySelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]
 [connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/EyesSelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]
@@ -151,3 +160,5 @@ edit_alpha = false
 [connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/GloveSelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]
 [connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/PantsSelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]
 [connection signal="part_selected" from="HBoxContainer/SettingsMargin/Settings/ShoeSelector" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_part"]
+[connection signal="color_changed" from="HBoxContainer/SettingsMargin/Settings/SkinColorContainer/SkinColorButton" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_shader" binds= [0]]
+[connection signal="color_changed" from="HBoxContainer/SettingsMargin/Settings/EyeColorContainer/EyeColorButton" to="HBoxContainer/CharacterPreviewMargin/CompositeSprite" method="update_shader" binds= [1]]
