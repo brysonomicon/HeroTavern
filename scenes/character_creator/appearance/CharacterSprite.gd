@@ -3,7 +3,7 @@ extends Node2D
 
 @export var parts: Dictionary[Character.Slot, Sprite2D]
 static var default_palette: Texture2D = load("res://assets/palettes/palette_character.png")
-var palette: Texture2D = load("res://assets/palettes/palette_character.png")
+var palette: Texture2D = preload("res://assets/palettes/palette_character.png")
 # Cache this, as its expensive to get.
 var palette_img: Image
 
