@@ -6,6 +6,6 @@
 .idea/
 .idea/vcs.xml
 # Ignore external tooling
-/tools/*
+/tools/*/
 #Expce the gdignore; stops the editor from tracking external tool files.
 !/tools/.gdignore
