@@ -7,8 +7,6 @@ var palette: Texture2D = load("res://assets/palettes/palette_character.png")
 # Cache this, as its expensive to get.
 var palette_img: Image
 
-@export var debugSprite: Sprite2D
-
 func _ready() -> void:
 	var setKeys: Array = parts.keys()
 	for required in Character.Slot.values():
@@ -20,23 +18,25 @@ func _ready() -> void:
 			if spriteNode.texture == null:
 				spriteNode.texture = Character.default_parts[required].texture
 			parts.set(required, spriteNode)
+	
 	palette_img = default_palette.get_image()
-	_set_shader()
+	
+	for part in parts:
+		var sprite: Sprite2D = parts[part]
+		var default_color: Color = palette_img.get_pixel(part + 2, 0)
+		sprite.set_instance_shader_parameter("default_color", default_color)
+		_update_part_shader(default_color, part)
 
-func _set_shader() -> void:
-	if(debugSprite != null):
-		debugSprite.texture = palette
-	var shaderMat = self.material as ShaderMaterial
-	shaderMat.set_shader_parameter("new_palette", palette)
-	print(shaderMat.get_shader_parameter("new_palette"))
-	pass
-
+	
+func _update_part_shader(new_color: Color, slot: Character.Slot ) -> void:
+	var sprite: Sprite2D = parts[slot]
+	sprite.set_instance_shader_parameter("new_color", new_color)
+		
 func update_shader(new_color: Color, slot: Character.Slot) -> void:
 	# +2 because 0th slot is transparency and 1st is outline.
 	palette_img.set_pixel(slot + 2, 0, new_color)
-	palette_img.set_pixel(slot + 2, 1, new_color)
 	palette = ImageTexture.create_from_image(palette_img)
-	_set_shader()
+	_update_part_shader(new_color, slot)
 
 func update_part(new_part: CharacterPart) -> void:
 	parts[new_part.slot].texture = new_part.texture
