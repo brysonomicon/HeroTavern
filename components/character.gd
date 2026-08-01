@@ -23,10 +23,6 @@ static var default_parts: Dictionary[Slot, CharacterPart] = {
 	Slot.SHOES: load("res://components/character_parts/shoes/default/boots.tres") as CharacterPart,
 }
 
-# CB: Should we just remove this? I've made it a getter for now.
-var class_label: String:
-	get: return _character_class.display_name
-
 enum Slot { BASE, EYES, HAIR, HELMET, SHIRT, GLOVES, PANTS, SHOES }
 enum StatType { STR, DEX, CON, INT, WIS, CHA }
 
