@@ -17,9 +17,8 @@ var _character_class: CharacterClass
 @export var skills: Array[Skill]
 
 @export_group("Sprite Info")
-@export var skin_color: Color = Color.WHITE
-@export var eye_color: Color = Color.SADDLE_BROWN
 @export var parts: Dictionary[Slot, CharacterPart] = {}
+@export var part_colors: Dictionary[Slot, Color] = {}
 
 static var default_parts: Dictionary[Slot, CharacterPart] = {
 	Slot.BASE: 	load("res://components/character_parts/bases/default/boofy.tres") as CharacterPart,
@@ -45,7 +44,7 @@ const KEY_STAT_MIN: int = 14
 
 func _init(creator = null) -> void:
 	for required in Slot.values():
-		if parts[required] == null:
+		if parts.get(required) == null:
 			self.parts[required] = Character.default_parts[required]
 	if creator:
 		creator.populate(self)

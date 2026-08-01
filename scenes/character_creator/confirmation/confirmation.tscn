@@ -14,7 +14,28 @@ script = ExtResource("1_ptglk")
 class_label = NodePath("VBoxContainer/ClassRow/ClassLabel")
 stats_label = NodePath("VBoxContainer/StatsRow/StatsLabel")
 skills_label = NodePath("VBoxContainer/SkillsRow/SkillsLabel")
-preview = NodePath("VBoxContainer/CharacterTextureBox")
+preview = NodePath("Control/CharacterTextureBox")
+
+[node name="Control" type="Control" parent="." unique_id=1172522906]
+anchors_preset = 0
+offset_left = 400.0
+offset_top = 300.0
+offset_right = 440.0
+offset_bottom = 300.0
+scale = Vector2(2, 2)
+
+[node name="CharacterTextureBox" parent="Control" unique_id=730120283 node_paths=PackedStringArray("parts") instance=ExtResource("2_wwo1v")]
+position = Vector2(0, -81)
+parts = {
+0: NodePath("Base"),
+1: NodePath("Eyes"),
+2: NodePath("Hair"),
+3: NodePath("Helmet"),
+4: NodePath("Shirt"),
+5: NodePath("Gloves"),
+6: NodePath("Pants"),
+7: NodePath("Shoes")
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1074213155]
 layout_mode = 0
@@ -38,15 +59,3 @@ layout_mode = 2
 
 [node name="SkillsLabel" type="Label" parent="VBoxContainer/SkillsRow" unique_id=2099607997]
 layout_mode = 2
-
-[node name="CharacterTextureBox" parent="VBoxContainer" unique_id=730120283 node_paths=PackedStringArray("parts") instance=ExtResource("2_wwo1v")]
-parts = {
-0: NodePath("Base"),
-1: NodePath("Eyes"),
-2: NodePath("Hair"),
-3: NodePath("Helmet"),
-4: NodePath("Shirt"),
-5: NodePath("Gloves"),
-6: NodePath("Pants"),
-7: NodePath("Shoes")
-}

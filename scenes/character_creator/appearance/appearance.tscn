@@ -13,7 +13,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_iuq4m")
 preview = NodePath("HBoxContainer/CharacterPreviewMargin/CompositeSprite")
-selectors = [NodePath("HBoxContainer/SettingsMargin/Settings/EyesSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/HairSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/HelmetSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/ShirtSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/GloveSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/PantsSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/ShoeSelector")]
+selectors = [NodePath("HBoxContainer/SettingsMargin/Settings/EyesSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/HairSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/HelmetSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/ShirtSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/GloveSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/PantsSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/ShoeSelector"), NodePath("HBoxContainer/SettingsMargin/Settings/BodySelector")]
 metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="ColorRect" parent="." unique_id=1119109850]

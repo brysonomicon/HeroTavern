@@ -40,3 +40,8 @@ func update_shader(new_color: Color, slot: Character.Slot) -> void:
 
 func update_part(new_part: CharacterPart) -> void:
 	parts[new_part.slot].texture = new_part.texture
+	
+func display(character: Character) -> void:
+	for slot in parts:
+		update_part(character.parts[slot])
+		_update_part_shader(character.part_colors[slot], slot)
