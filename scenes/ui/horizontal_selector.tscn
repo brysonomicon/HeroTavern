@@ -2,12 +2,12 @@
 
 [ext_resource type="Script" uid="uid://b3p5t3s2hoiwo" path="res://scenes/ui/horizontal_selector.gd" id="1_n5sjo"]
 
-[node name="HorizonalSelector" type="HBoxContainer" unique_id=498084214 node_paths=PackedStringArray("slotLabel", "leftButton", "rightButton", "label")]
+[node name="HorizonalSelector" type="HBoxContainer" unique_id=498084214 node_paths=PackedStringArray("slotLabel", "leftButton", "rightButton", "colorPicker", "label")]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_top = -300.0
-offset_right = 180.0
+offset_right = 192.0
 offset_bottom = -269.0
 grow_vertical = 2
 script = ExtResource("1_n5sjo")
@@ -15,6 +15,7 @@ directory = "res://components/character_parts"
 slotLabel = NodePath("SlotLabel")
 leftButton = NodePath("ButtonPrevious")
 rightButton = NodePath("ButtonNext")
+colorPicker = NodePath("ColorPickerButton")
 label = NodePath("PartLabel")
 
 [node name="SlotLabel" type="Label" parent="." unique_id=284808098]
@@ -37,5 +38,12 @@ vertical_alignment = 1
 layout_mode = 2
 text = ">"
 
+[node name="ColorPickerButton" type="ColorPickerButton" parent="." unique_id=431692709]
+layout_mode = 2
+size_flags_horizontal = 3
+edit_alpha = false
+edit_intensity = false
+
 [connection signal="pressed" from="ButtonPrevious" to="." method="prev_item"]
 [connection signal="pressed" from="ButtonNext" to="." method="next_item"]
+[connection signal="color_changed" from="ColorPickerButton" to="." method="_on_color_changed"]

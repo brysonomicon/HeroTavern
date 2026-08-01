@@ -4,7 +4,7 @@ class_name CharacterPart
 @export var slot:Character.Slot
 @export var displayName:String
 @export var texture:Texture2D
-static var default_palette: CompressedTexture2D = preload("res://assets/palettes/palette_character.png")
+static var default_palette: Texture2D = preload("res://assets/palettes/palette_character.png")
 
 # Static generator method
 # CB: you can't have multiple constructors, so this is my way to work around
@@ -21,3 +21,8 @@ static func factory(
 	newPart.texture = texture2d
 	
 	return newPart
+	
+static func get_default_color(slotType: Character.Slot) -> Color:
+	var palette_img: Image = default_palette.get_image()
+	return palette_img.get_pixel(slotType + 2, 0)
+	

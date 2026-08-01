@@ -2,6 +2,7 @@ class_name HorizontalSelector
 extends HBoxContainer
 
 signal part_selected(item:CharacterPart)
+signal color_changed(color: Color, slot: Character.Slot)
 
 @export_dir var directory:String
 
@@ -9,7 +10,7 @@ signal part_selected(item:CharacterPart)
 @export var slotLabel: Label
 @export var leftButton: Button
 @export var rightButton: Button
-
+@export var colorPicker: ColorPickerButton
 @export var label: Label
 
 var items: Array[CharacterPart] = []
@@ -35,6 +36,7 @@ func _ready() -> void:
 	
 	# Throw is items is empty
 	assert(items.is_empty() == false)
+	colorPicker.color = CharacterPart.get_default_color(slot)
 	
 	# After we populate the array, set the label using the display name
 	_apply()
@@ -59,3 +61,6 @@ func prev_item():
 func _apply() -> void:
 	label.text = items[index].displayName.capitalize()
 	part_selected.emit(items[index])
+	
+func _on_color_changed(new_color: Color) -> void:
+	color_changed.emit(new_color, slot)
