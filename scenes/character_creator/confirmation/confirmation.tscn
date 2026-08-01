@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dlxjl7ty2vng0"]
 
 [ext_resource type="Script" uid="uid://bwsvwd4fekpb6" path="res://scenes/character_creator/confirmation/confirmation.gd" id="1_ptglk"]
-[ext_resource type="PackedScene" uid="uid://bv65d6ukpxaol" path="res://scenes/character_creator/appearance/character_texture_box.tscn" id="2_wwo1v"]
+[ext_resource type="PackedScene" uid="uid://tlxip6ik6qa1" path="res://scenes/character_creator/appearance/CharacterSprite.tscn" id="2_wwo1v"]
 
 [node name="Confirmation" type="Control" unique_id=329187539 node_paths=PackedStringArray("character_name", "class_label", "stats_label", "skills_label", "preview")]
 layout_mode = 3
@@ -15,7 +15,28 @@ character_name = NodePath("VBoxContainer/NameRow/LineEdit")
 class_label = NodePath("VBoxContainer/ClassRow/ClassLabel")
 stats_label = NodePath("VBoxContainer/StatsRow/StatsLabel")
 skills_label = NodePath("VBoxContainer/SkillsRow/SkillsLabel")
-preview = NodePath("VBoxContainer/CharacterTextureBox")
+preview = NodePath("Control/CharacterTextureBox")
+
+[node name="Control" type="Control" parent="." unique_id=1172522906]
+anchors_preset = 0
+offset_left = 400.0
+offset_top = 300.0
+offset_right = 440.0
+offset_bottom = 300.0
+scale = Vector2(2, 2)
+
+[node name="CharacterTextureBox" parent="Control" unique_id=730120283 node_paths=PackedStringArray("parts") instance=ExtResource("2_wwo1v")]
+position = Vector2(0, -81)
+parts = {
+0: NodePath("Base"),
+1: NodePath("Eyes"),
+2: NodePath("Hair"),
+3: NodePath("Helmet"),
+4: NodePath("Shirt"),
+5: NodePath("Gloves"),
+6: NodePath("Pants"),
+7: NodePath("Shoes")
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1074213155]
 layout_mode = 0
@@ -50,13 +71,3 @@ layout_mode = 2
 
 [node name="SkillsLabel" type="Label" parent="VBoxContainer/SkillsRow" unique_id=2099607997]
 layout_mode = 2
-
-[node name="CharacterTextureBox" parent="VBoxContainer" unique_id=730120283 node_paths=PackedStringArray("parts") instance=ExtResource("2_wwo1v")]
-layout_mode = 2
-parts = {
-0: NodePath("eyes"),
-1: NodePath("gloves"),
-2: NodePath("pants"),
-3: NodePath("shirt"),
-4: NodePath("shoes")
-}

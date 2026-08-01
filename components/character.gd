@@ -9,11 +9,25 @@ extends Resource
 @export var skills: Array[Skill]
 
 @export_group("Sprite Info")
-@export var skin_color: Color = Color.WHITE
-@export var eye_color: Color = Color.SADDLE_BROWN
 @export var parts: Dictionary[Slot, CharacterPart] = {}
+@export var part_colors: Dictionary[Slot, Color] = {}
 
-enum Slot { EYES, GLOVES, PANTS, SHIRTS, SHOES }
+static var default_parts: Dictionary[Slot, CharacterPart] = {
+	Slot.BASE: 	load("res://components/character_parts/bases/default/boofy.tres") as CharacterPart,
+	Slot.EYES: 	load("res://components/character_parts/eyes/default/eyes.tres") as CharacterPart,
+	Slot.HAIR: 	load("res://components/character_parts/hair/default/bald.tres") as CharacterPart,
+	Slot.HELMET:load("res://components/character_parts/helmets/default/helmetless.tres") as CharacterPart,
+	Slot.SHIRT: load("res://components/character_parts/shirts/default/shirtless.tres") as CharacterPart,
+	Slot.GLOVES:load("res://components/character_parts/gloves/default/gloves.tres") as CharacterPart,
+	Slot.PANTS: load("res://components/character_parts/pants/default/shorts.tres") as CharacterPart,
+	Slot.SHOES: load("res://components/character_parts/shoes/default/boots.tres") as CharacterPart,
+}
+
+# CB: Should we just remove this? I've made it a getter for now.
+var class_label: String:
+	get: return _character_class.display_name
+
+enum Slot { BASE, EYES, HAIR, HELMET, SHIRT, GLOVES, PANTS, SHOES }
 enum StatType { STR, DEX, CON, INT, WIS, CHA }
 
 const STAT_MIN: int = 3
@@ -35,3 +49,9 @@ func _to_string() -> String:
 	lines.append(" " + " ".join(skill_stuff))
 	
 	return "\n".join(lines)
+func _init(creator = null) -> void:
+	for required in Slot.values():
+		if parts.get(required) == null:
+			self.parts[required] = Character.default_parts[required]
+	if creator:
+		creator.populate(self)

@@ -8,7 +8,7 @@ signal complete
 @export var class_label: Label
 @export var stats_label: Label
 @export var skills_label: Label
-@export var preview: CharacterTextureBox
+@export var preview: CharacterSprite
 
 func _ready() -> void:
 	character_name.text_changed.connect(_on_name_changed)
