@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://bt1efj7kmd1a8"]
+
+[ext_resource type="Script" uid="uid://j2jvcx44u5vg" path="res://scenes/world/player.gd" id="1_l3o4k"]
+[ext_resource type="PackedScene" uid="uid://tlxip6ik6qa1" path="res://scenes/character_creator/appearance/CharacterSprite.tscn" id="2_l3o4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l3o4k"]
+size = Vector2(24, 12)
+
+[node name="Player" type="CharacterBody2D" unique_id=238682364 node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_l3o4k")
+sprite = NodePath("")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=185564727]
+shape = SubResource("RectangleShape2D_l3o4k")
+
+[node name="CompositeSprite" parent="." unique_id=1787682309 node_paths=PackedStringArray("parts") instance=ExtResource("2_l3o4k")]
+parts = {
+0: NodePath("Base"),
+1: NodePath("Eyes"),
+2: NodePath("Hair"),
+3: NodePath("Helmet"),
+4: NodePath("Shirt"),
+5: NodePath("Gloves"),
+6: NodePath("Pants"),
+7: NodePath("Shoes")
+}
