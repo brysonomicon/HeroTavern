@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bgnxq7o0a3sg"]
+
+[ext_resource type="Script" uid="uid://buoj2imlqwd6" path="res://scenes/world/world.gd" id="1_sl2e5"]
+[ext_resource type="PackedScene" uid="uid://bt1efj7kmd1a8" path="res://scenes/world/player.tscn" id="2_1fp7r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6m72w"]
+size = Vector2(832, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5dby"]
+size = Vector2(16, 616)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5ptc"]
+size = Vector2(832, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bq33v"]
+size = Vector2(16, 616)
+
+[node name="World" type="Node2D" unique_id=1407875596 node_paths=PackedStringArray("player", "spawn_point")]
+script = ExtResource("1_sl2e5")
+player = NodePath("Player")
+spawn_point = NodePath("Room/Spawn")
+
+[node name="Room" type="Node2D" parent="." unique_id=1655111002]
+
+[node name="Floor" type="ColorRect" parent="Room" unique_id=878216786]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Walls" type="StaticBody2D" parent="Room" unique_id=1793850409]
+
+[node name="Top" type="CollisionShape2D" parent="Room/Walls" unique_id=2105249003]
+position = Vector2(0, -308)
+shape = SubResource("RectangleShape2D_6m72w")
+
+[node name="Right" type="CollisionShape2D" parent="Room/Walls" unique_id=594902691]
+position = Vector2(408, 0)
+shape = SubResource("RectangleShape2D_v5dby")
+
+[node name="Bottom" type="CollisionShape2D" parent="Room/Walls" unique_id=928279454]
+position = Vector2(0, 308)
+shape = SubResource("RectangleShape2D_t5ptc")
+
+[node name="Left" type="CollisionShape2D" parent="Room/Walls" unique_id=1296960902]
+position = Vector2(-408, 0)
+shape = SubResource("RectangleShape2D_bq33v")
+
+[node name="Spawn" type="Marker2D" parent="Room" unique_id=1908929455]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=98479892]
+
+[node name="Player" parent="." unique_id=238682364 instance=ExtResource("2_1fp7r")]

@@ -5,36 +5,40 @@ extends Node
 const MAIN_MENU: PackedScene = preload("res://scenes/main_menu.tscn")
 const SETTINGS: PackedScene = preload("res://scenes/settings.tscn")
 const CHAR_CREATOR: PackedScene = preload("res://scenes/character_creator/creator_main.tscn")
+const WORLD: PackedScene = preload("res://scenes/world/world.tscn")
+const TAVERN_MANAGER_CREATOR: PackedScene = preload("res://scenes/character_creator/tavern_manager_creator/manager_creator.tscn")
+
+const SAVE_PATH: String = "user://save.tres"
+const SAVE_TMP_PATH: String = "user://save.tmp.tres"
 
 var _current_screen: Node = null
-
-const ROSTER_PATH: String = "user://roster.tres"
-const ROSTER_TMP_PATH: String = "user://roster.tmp.tres"
-
-var	hero_roster: HeroRoster
+var state: GameState
 
 func _ready() -> void:
+	_load_state()
 	_show_main_menu()
-	_load_roster()
 
 #region signal handlers
 func _on_start_new_game() -> void:
-	var char_creator: Node = CHAR_CREATOR.instantiate()
-	char_creator.character_created.connect(_on_char_created)
-	_set_screen(char_creator)
+	state = GameState.new()
+	var creator: Node = goto(TAVERN_MANAGER_CREATOR)
+	creator.character_created.connect(_on_manager_created)
 
-func _on_char_created(data) -> void:
-	hero_roster.heroes.append(data)
-	_save_roster()
-	_show_main_menu()
+func _on_manager_created(manager: Character) -> void:
+	state.tavern_manager = manager
+	_save_state()
+	_enter_world()
+
+#func _on_char_created(data) -> void:
+	#hero_roster.heroes.append(data)
+	#_save_roster()
+	#_show_main_menu()
 	
 func _on_continue_game() -> void:
-	if hero_roster.heroes.is_empty():
-		print("Hero roster is empty")
-	else:
-		print("=== Hero Roster: [%d] ===" %hero_roster.heroes.size())
-		for hero in hero_roster.heroes:
-			print(hero)
+	if state.tavern_manager == null:
+		print("No tavern manager - imagine this is greyed out")
+		return
+	_enter_world()
 
 func _on_open_settings() -> void:
 	var settings: Node = goto(SETTINGS)
@@ -42,19 +46,23 @@ func _on_open_settings() -> void:
 #endregion
 
 #region internals
-func _load_roster() -> void:
-	if ResourceLoader.exists(ROSTER_PATH):
-		hero_roster = ResourceLoader.load(ROSTER_PATH) as HeroRoster
-	if hero_roster == null:
-		hero_roster = HeroRoster.new()
 
-func _save_roster() -> void:
-	var error: Error = ResourceSaver.save(hero_roster, ROSTER_TMP_PATH)
-	
+func _enter_world() -> void:
+	var world: Node = goto(WORLD)
+	world.setup(state)
+
+func _load_state() -> void:
+	if ResourceLoader.exists(SAVE_PATH):
+		state = ResourceLoader.load(SAVE_PATH, "", ResourceLoader.CACHE_MODE_IGNORE) as GameState
+	if state == null:
+		state = GameState.new()
+
+func _save_state() -> void:
+	var error: Error = ResourceSaver.save(state, SAVE_TMP_PATH)
 	if error != OK:
-		push_error("Error saving roster: %s" % error_string(error))
+		push_error("Error saving: %s" % error_string(error))
 		return
-	DirAccess.rename_absolute(ROSTER_TMP_PATH, ROSTER_PATH)
+	DirAccess.rename_absolute(SAVE_TMP_PATH, SAVE_PATH)
 
 func _show_main_menu() -> void:
 	var menu: Node = goto(MAIN_MENU)

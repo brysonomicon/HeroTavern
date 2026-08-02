@@ -8,7 +8,7 @@ size = Vector2(24, 12)
 
 [node name="Player" type="CharacterBody2D" unique_id=238682364 node_paths=PackedStringArray("sprite")]
 script = ExtResource("1_l3o4k")
-sprite = NodePath("")
+sprite = NodePath("CompositeSprite")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=185564727]
 shape = SubResource("RectangleShape2D_l3o4k")

@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cm3owyh1an3y6"]
+
+[ext_resource type="Script" uid="uid://cf5vhhslrn5fe" path="res://scenes/character_creator/tavern_manager_creator/manager_confirmation.gd" id="1_6rxmg"]
+[ext_resource type="PackedScene" uid="uid://tlxip6ik6qa1" path="res://scenes/character_creator/appearance/CharacterSprite.tscn" id="2_72bmn"]
+
+[node name="Confirmation" type="Control" unique_id=329187539 node_paths=PackedStringArray("character_name", "preview")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_6rxmg")
+character_name = NodePath("VBoxContainer/NameRow/LineEdit")
+preview = NodePath("Control/CharacterTextureBox")
+
+[node name="Control" type="Control" parent="." unique_id=1172522906]
+anchors_preset = 0
+offset_left = 400.0
+offset_top = 300.0
+offset_right = 440.0
+offset_bottom = 300.0
+scale = Vector2(2, 2)
+
+[node name="CharacterTextureBox" parent="Control" unique_id=730120283 node_paths=PackedStringArray("parts") instance=ExtResource("2_72bmn")]
+position = Vector2(0, -81)
+parts = {
+0: NodePath("Base"),
+1: NodePath("Eyes"),
+2: NodePath("Hair"),
+3: NodePath("Helmet"),
+4: NodePath("Shirt"),
+5: NodePath("Gloves"),
+6: NodePath("Pants"),
+7: NodePath("Shoes")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1074213155]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NameRow" type="HBoxContainer" parent="VBoxContainer" unique_id=2013219073]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="VBoxContainer/NameRow" unique_id=1410058047]
+layout_mode = 2
+text = "Name:"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/NameRow" unique_id=1727429452]
+layout_mode = 2
+max_length = 50
