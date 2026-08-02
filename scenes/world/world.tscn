@@ -2,50 +2,33 @@
 
 [ext_resource type="Script" uid="uid://buoj2imlqwd6" path="res://scenes/world/world.gd" id="1_sl2e5"]
 [ext_resource type="PackedScene" uid="uid://bt1efj7kmd1a8" path="res://scenes/world/player.tscn" id="2_1fp7r"]
+[ext_resource type="PackedScene" uid="uid://dh45d6dt78rbu" path="res://scenes/world/rooms/bedroom.tscn" id="2_t5ptc"]
+[ext_resource type="PackedScene" uid="uid://d3hkv0dwcrjoy" path="res://scenes/world/rooms/tavern.tscn" id="3_bq33v"]
+[ext_resource type="PackedScene" uid="uid://cyb6j2hc42qes" path="res://scenes/world/rooms/recovery.tscn" id="4_j2gmx"]
+[ext_resource type="PackedScene" uid="uid://nj1tvrr7iuur" path="res://scenes/world/rooms/tapestry.tscn" id="5_1yooq"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6m72w"]
-size = Vector2(832, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5dby"]
-size = Vector2(16, 616)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_t5ptc"]
-size = Vector2(832, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bq33v"]
-size = Vector2(16, 616)
-
-[node name="World" type="Node2D" unique_id=1407875596 node_paths=PackedStringArray("player", "spawn_point")]
+[node name="World" type="Node2D" unique_id=657803259 node_paths=PackedStringArray("player", "camera", "rooms", "starting_room")]
 script = ExtResource("1_sl2e5")
 player = NodePath("Player")
-spawn_point = NodePath("Room/Spawn")
+camera = NodePath("Camera2D")
+rooms = [NodePath("Rooms/Bedroom"), NodePath("Rooms/Tavern"), NodePath("Rooms/Recovery"), NodePath("Rooms/Tapestry")]
+starting_room = NodePath("Rooms/Bedroom")
 
-[node name="Room" type="Node2D" parent="." unique_id=1655111002]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=570739996]
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
 
-[node name="Floor" type="ColorRect" parent="Room" unique_id=878216786]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Rooms" type="Node2D" parent="." unique_id=1087576965]
 
-[node name="Walls" type="StaticBody2D" parent="Room" unique_id=1793850409]
+[node name="Bedroom" parent="Rooms" unique_id=731763690 instance=ExtResource("2_t5ptc")]
+position = Vector2(0, -600)
 
-[node name="Top" type="CollisionShape2D" parent="Room/Walls" unique_id=2105249003]
-position = Vector2(0, -308)
-shape = SubResource("RectangleShape2D_6m72w")
+[node name="Tavern" parent="Rooms" unique_id=446793268 instance=ExtResource("3_bq33v")]
 
-[node name="Right" type="CollisionShape2D" parent="Room/Walls" unique_id=594902691]
-position = Vector2(408, 0)
-shape = SubResource("RectangleShape2D_v5dby")
+[node name="Recovery" parent="Rooms" unique_id=1763292659 instance=ExtResource("4_j2gmx")]
+position = Vector2(800, 0)
 
-[node name="Bottom" type="CollisionShape2D" parent="Room/Walls" unique_id=928279454]
-position = Vector2(0, 308)
-shape = SubResource("RectangleShape2D_t5ptc")
-
-[node name="Left" type="CollisionShape2D" parent="Room/Walls" unique_id=1296960902]
-position = Vector2(-408, 0)
-shape = SubResource("RectangleShape2D_bq33v")
-
-[node name="Spawn" type="Marker2D" parent="Room" unique_id=1908929455]
-
-[node name="Camera2D" type="Camera2D" parent="." unique_id=98479892]
+[node name="Tapestry" parent="Rooms" unique_id=1717498015 instance=ExtResource("5_1yooq")]
+position = Vector2(-800, 0)
 
 [node name="Player" parent="." unique_id=238682364 instance=ExtResource("2_1fp7r")]

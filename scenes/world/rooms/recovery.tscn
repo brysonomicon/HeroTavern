@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cyb6j2hc42qes"]
+
+[ext_resource type="Script" uid="uid://byyic7hpkh0hi" path="res://scenes/world/room.gd" id="1_smjo5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kirym"]
+size = Vector2(816, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0r6vs"]
+size = Vector2(816, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8k3gl"]
+size = Vector2(16, 260)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tba0v"]
+size = Vector2(16, 616)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6vavg"]
+size = Vector2(736, 536)
+
+[node name="Recovery" type="Node2D" unique_id=731763690 node_paths=PackedStringArray("trigger", "spawn")]
+script = ExtResource("1_smjo5")
+display_name = "Bedroom"
+trigger = NodePath("Trigger")
+spawn = NodePath("Spawn")
+
+[node name="Floor" type="ColorRect" parent="." unique_id=1725700749]
+offset_left = -400.0
+offset_top = -300.0
+offset_right = 400.0
+offset_bottom = 300.0
+color = Color(0.46456456, 0.77364784, 0.8784909, 1)
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=1960156256]
+
+[node name="Top" type="CollisionShape2D" parent="Walls" unique_id=1000667687]
+position = Vector2(0, -300)
+shape = SubResource("RectangleShape2D_kirym")
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls" unique_id=894097352]
+position = Vector2(0, 300)
+shape = SubResource("RectangleShape2D_0r6vs")
+
+[node name="LeftTop" type="CollisionShape2D" parent="Walls" unique_id=1421726480]
+position = Vector2(-400, -178)
+shape = SubResource("RectangleShape2D_8k3gl")
+
+[node name="LeftBottom" type="CollisionShape2D" parent="Walls" unique_id=1381205793]
+position = Vector2(-400, 178)
+shape = SubResource("RectangleShape2D_8k3gl")
+
+[node name="Right" type="CollisionShape2D" parent="Walls" unique_id=542971930]
+position = Vector2(400, 0)
+shape = SubResource("RectangleShape2D_tba0v")
+
+[node name="Trigger" type="Area2D" parent="." unique_id=357238652]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" unique_id=1458097733]
+shape = SubResource("RectangleShape2D_6vavg")
+
+[node name="Spawn" type="Marker2D" parent="." unique_id=1080192399]
