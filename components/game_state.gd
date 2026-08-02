@@ -1,11 +1,9 @@
-extends Node
+class_name GameState
+extends Resource
 
+@export var tavern_manager: Character
+@export var hero_roster: HeroRoster
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _init() -> void:
+	if hero_roster == null:
+		hero_roster = HeroRoster.new()
